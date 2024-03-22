@@ -1,6 +1,7 @@
 
 package Dao;
 
+import Dao.impl.InterfaceBanchitiet;
 import Model.BanChiTiet;
 import Helper.JDBCHeper;
 import java.sql.ResultSet;

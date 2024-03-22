@@ -1,5 +1,5 @@
 
-package Dao;
+package Dao.impl;
 
 import Model.GiamGiaChiTiet;
 import Model.LoaiSanPham;

@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Dao.impl.InterfaceBan;
 import Model.Ban;
 import Helper.JDBCHeper;
 import java.sql.ResultSet;
@@ -111,13 +112,11 @@ public class BanDao implements InterfaceBan{
     }
     
     public Ban selectIDHD(int maHD){
-        //return selectBySql(SELECT_BY_ID_HD, maHD).get(0);
         List<Ban> list = this.selectBySql(SELECT_BY_ID_HD, maHD);
         if (list.isEmpty()) {
             return null;
         }
         return list.get(0);
-        
     }
     
     public List<Ban> selectbanTrong(){

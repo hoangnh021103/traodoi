@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Dao.impl.InterfaceGiamGiaCT;
 import Model.*;
 import Model.GiamGia;
 import Helper.*;

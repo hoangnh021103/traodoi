@@ -97,14 +97,15 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(241, 241, 241));
 
-        jPanel4.setBackground(new java.awt.Color(255, 193, 75));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Doanh thu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel4.setBackground(new java.awt.Color(139, 69, 19));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Doanh thu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
 
         lbldoanhthutext.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbldoanhthutext.setForeground(new java.awt.Color(255, 255, 255));
         lbldoanhthutext.setText("Doanh thu");
 
         lblDoanhthu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblDoanhthu.setForeground(new java.awt.Color(0, 255, 255));
         lblDoanhthu.setText("00000000000000");
 
         lblsosanh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -112,9 +113,11 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         lblsosanh.setText("Doanh Thu So Với ");
 
         lblsosanhso.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblsosanhso.setForeground(new java.awt.Color(0, 255, 255));
         lblsosanhso.setText("00000000000000");
 
         lblDoanhthu1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblDoanhthu1.setForeground(new java.awt.Color(0, 255, 255));
         lblDoanhthu1.setText("00000000000000");
 
         lbldoanhthutext1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -122,6 +125,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         lbldoanhthutext1.setText("Tổng Đơn Đã Bán");
 
         lbltongsanpham.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbltongsanpham.setForeground(new java.awt.Color(0, 255, 255));
         lbltongsanpham.setText("00000000000000");
 
         lbldoanhthutext2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -171,8 +175,8 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 193, 75));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(139, 69, 19));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
 
         cboDate.setToolTipText("");
         cboDate.addItemListener(new java.awt.event.ItemListener() {
@@ -182,6 +186,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Đến");
 
         btnTimkiem.setText("Tìm kiếm ");
@@ -199,6 +204,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Thống Kê Từ Ngày:");
 
         btnTimkiem3.setText("Gửi Mail Báo Cáo");
@@ -314,6 +320,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(241, 241, 241));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn Hủy Theo Nhân Viên:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
+        tblhuydon.setForeground(new java.awt.Color(0, 255, 255));
         tblhuydon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

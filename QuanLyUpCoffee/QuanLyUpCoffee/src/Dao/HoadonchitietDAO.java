@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Dao.impl.InterfaceHoadonchittiet;
 import Model.HoaDonChiTiet;
 import Helper.JDBCHeper;
 import java.sql.ResultSet;

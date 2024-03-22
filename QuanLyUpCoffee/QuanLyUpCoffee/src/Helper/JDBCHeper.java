@@ -9,7 +9,7 @@ public class JDBCHeper {
    static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
    static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=UPCOFFEE";
    static String user ="sa";
-   static String password ="nguyenhuyhoang";
+   static String password ="123456";
 
 //    static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 //    static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=QUANLYCAPHEBANME";//kết nối db

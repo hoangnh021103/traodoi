@@ -1796,8 +1796,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 DAOBAN.selectIDHD(hd.getIdHoaDon()).getIdBan(),
                 hd.getSDT()
             });
-            
-            System.out.println("thành tiền: "+hd.getThanhTien());
         }
     }
 

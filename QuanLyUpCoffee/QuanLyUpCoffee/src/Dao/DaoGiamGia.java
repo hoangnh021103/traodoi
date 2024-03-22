@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Dao.impl.InterfaceGiamGia;
 import Model.NhanVien;
 import Model.GiamGia;
 import java.util.List;

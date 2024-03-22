@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Dao.impl.InterfaceNhanVien;
 import Model.NhanVien;
 import Helper.JDBCHeper;
 

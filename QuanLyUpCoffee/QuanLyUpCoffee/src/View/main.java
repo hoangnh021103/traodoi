@@ -91,13 +91,14 @@ public class main extends javax.swing.JFrame {
 
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel4.setBackground(new java.awt.Color(41, 93, 157));
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
         jPanel4.setToolTipText("");
         jPanel4.setPreferredSize(new java.awt.Dimension(260, 780));
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
-        pnTrangChu.setBackground(new java.awt.Color(41, 93, 157));
+        pnTrangChu.setBackground(new java.awt.Color(0, 0, 0));
         pnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnTrangChuMouseClicked(evt);
@@ -128,7 +129,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnTrangChu);
 
-        pnBanHang.setBackground(new java.awt.Color(41, 93, 157));
+        pnBanHang.setBackground(new java.awt.Color(0, 0, 0));
         pnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnBanHangMouseClicked(evt);
@@ -159,7 +160,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnBanHang);
 
-        pnSanPham.setBackground(new java.awt.Color(41, 93, 157));
+        pnSanPham.setBackground(new java.awt.Color(0, 0, 0));
         pnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnSanPhamMouseClicked(evt);
@@ -190,7 +191,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnSanPham);
 
-        pnHoaDon.setBackground(new java.awt.Color(41, 93, 157));
+        pnHoaDon.setBackground(new java.awt.Color(0, 0, 0));
         pnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnHoaDonMouseClicked(evt);
@@ -221,7 +222,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnHoaDon);
 
-        pnNhanVien.setBackground(new java.awt.Color(41, 93, 157));
+        pnNhanVien.setBackground(new java.awt.Color(0, 0, 0));
         pnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnNhanVienMouseClicked(evt);
@@ -252,7 +253,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnNhanVien);
 
-        pnThongke.setBackground(new java.awt.Color(41, 93, 157));
+        pnThongke.setBackground(new java.awt.Color(0, 0, 0));
         pnThongke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnThongkeMouseClicked(evt);
@@ -283,7 +284,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnThongke);
 
-        pnGiagia.setBackground(new java.awt.Color(41, 93, 157));
+        pnGiagia.setBackground(new java.awt.Color(0, 0, 0));
         pnGiagia.setPreferredSize(new java.awt.Dimension(260, 86));
         pnGiagia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -319,7 +320,7 @@ public class main extends javax.swing.JFrame {
         lblNameNV.setForeground(new java.awt.Color(255, 255, 255));
         lblNameNV.setText("Wellcome Here!");
 
-        jPanel2.setBackground(new java.awt.Color(41, 93, 157));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/use.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -370,7 +371,7 @@ public class main extends javax.swing.JFrame {
 
         jPanel3.add(jPanel4);
 
-        pnscrene.setBackground(new java.awt.Color(241, 241, 241));
+        pnscrene.setBackground(new java.awt.Color(255, 255, 255));
         pnscrene.setPreferredSize(new java.awt.Dimension(1159, 0));
         pnscrene.setLayout(new java.awt.BorderLayout());
         jPanel3.add(pnscrene);
@@ -629,13 +630,13 @@ public class main extends javax.swing.JFrame {
         pnscrene.validate();
     }
      public void setColorJpanel(JPanel pane){
-        pane.setBackground(new java.awt.Color(55, 148, 254));
+        pane.setBackground(new Color(139, 69, 19));
     }
     public void resetColorJpane(JPanel pane){
-        pane.setBackground(new java.awt.Color(41, 93, 157));
+        pane.setBackground(Color.black);
     }
     public void setColor(JLabel label) {
-        label.setForeground(Color.black);
+        label.setForeground(Color.WHITE);
     }
 
     public void resetColor(JLabel label) {

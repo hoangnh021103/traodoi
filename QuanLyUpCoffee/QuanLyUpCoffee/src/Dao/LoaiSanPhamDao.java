@@ -5,6 +5,7 @@
 package Dao;
 
 
+import Dao.impl.InterfaceLoaiSanPham;
 import Model.*;
 import java.util.*;
 import java.sql.ResultSet;
