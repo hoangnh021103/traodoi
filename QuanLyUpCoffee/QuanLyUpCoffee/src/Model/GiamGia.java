@@ -79,5 +79,7 @@ public class GiamGia {
     public void setIdnhanvien(String idnhanvien) {
         this.idnhanvien = idnhanvien;
     }
-
+    public static void main(String[] args) {
+        System.out.println("Hello world");
+    }
 }
