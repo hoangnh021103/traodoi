@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package dao1;
 
-import Dao.impl.InterfaceBan;
-import Model.Ban;
-import Helper.JDBCHeper;
+import dao.impl.InterfaceBan;
+import model.Ban;
+import helper.JDBCHeper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,17 +44,17 @@ public class BanDao implements InterfaceBan{
 //        "AND dbo.HoaDon.TTThanhtoan = 0 AND Donchinh = 1 AND dbo.HoaDon.ID_Hoadon = ?";
     @Override
     public void insert(Ban Entity) {
-        Helper.JDBCHeper.update(INSERT_SQL, Entity.getIdBan(), Entity.isTrangThai(),Entity.isHoatDong(),Entity.getSoluongcho());
+        helper.JDBCHeper.update(INSERT_SQL, Entity.getIdBan(), Entity.isTrangThai(),Entity.isHoatDong(),Entity.getSoluongcho());
     }
 
     @Override
     public void updateTrangThai(int id) {
-        Helper.JDBCHeper.update(UPDATE_SQL_TRANGTHAI, id);
+        helper.JDBCHeper.update(UPDATE_SQL_TRANGTHAI, id);
     }
 
     @Override
     public void deleteTRangThai(int id) {
-        Helper.JDBCHeper.update(DELETE_SQL_TRANGTHAI, id);
+        helper.JDBCHeper.update(DELETE_SQL_TRANGTHAI, id);
     }
 
     @Override
@@ -103,12 +103,12 @@ public class BanDao implements InterfaceBan{
 
     @Override
     public void updateHoatDong(int id) {
-        Helper.JDBCHeper.update(UPDATE_SQL_HD, id);
+        helper.JDBCHeper.update(UPDATE_SQL_HD, id);
     }
 
     @Override
     public void deleteHoatDong(int id) {
-        Helper.JDBCHeper.update(DELETE_SQL_HD, id);
+        helper.JDBCHeper.update(DELETE_SQL_HD, id);
     }
     
     public Ban selectIDHD(int maHD){
@@ -136,7 +136,7 @@ public class BanDao implements InterfaceBan{
 
     @Override
     public void delete(int id) {
-        Helper.JDBCHeper.update(DELETE, id);
+        helper.JDBCHeper.update(DELETE, id);
     }
 
     @Override
@@ -146,7 +146,7 @@ public class BanDao implements InterfaceBan{
 
     @Override
     public void update(Ban Entity) {
-        Helper.JDBCHeper.update(UPDATE_SQL, Entity.getSoluongcho(), Entity.isTrangThai(), Entity.isHoatDong(), Entity.getIdBan());
+        helper.JDBCHeper.update(UPDATE_SQL, Entity.getSoluongcho(), Entity.isTrangThai(), Entity.isHoatDong(), Entity.getIdBan());
     }
 
     @Override

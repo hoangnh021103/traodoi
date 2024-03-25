@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dao;
-import Dao.impl.InterfaceDonViSanPham;
-import Model.DonViSanPham;
+package dao1;
+import dao.impl.InterfaceDonViSanPham;
+import model.DonViSanPham;
 import java.util.*;
-import Helper.JDBCHeper;
+import helper.JDBCHeper;
 import java.sql.ResultSet;
 
 /**

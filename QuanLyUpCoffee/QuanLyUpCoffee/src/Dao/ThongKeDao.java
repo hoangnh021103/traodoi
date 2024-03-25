@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dao;
+package dao1;
 
-import Dao.ThongKeDonBan;
-import Dao.ThongKeSPBan;
-import Dao.ThongKeBieuDoNam;
-import View.MainThongKeJPanel;
-import Helper.JDBCHeper;
+import dao1.ThongKeDonBan;
+import dao1.ThongKeSPBan;
+import dao1.ThongKeBieuDoNam;
+import views.MainThongKeJPanel;
+import helper.JDBCHeper;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao.impl;
+package dao.impl;
 
-import Model.HoaDonChiTiet;
+import model.HoaDonChiTiet;
 import java.util.List;
-import Model.SanPham;
+import model.SanPham;
 /**
  *
  * @author HP

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package dao1;
 
-import Dao.impl.InterfaceNhanVien;
-import Model.NhanVien;
-import Helper.JDBCHeper;
+import dao.impl.InterfaceNhanVien;
+import model.NhanVien;
+import helper.JDBCHeper;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;

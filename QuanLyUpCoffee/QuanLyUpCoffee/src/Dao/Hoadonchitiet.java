@@ -1,4 +1,4 @@
-package Dao;
+package dao1;
 public class Hoadonchitiet {
     private int ID_Hoadon;
     private String ID_SanPHam;

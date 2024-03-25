@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package dao1;
 
-import Dao.impl.InterfaceGiamGia;
-import Model.NhanVien;
-import Model.GiamGia;
+import dao.impl.InterfaceGiamGia;
+import model.NhanVien;
+import model.GiamGia;
 import java.util.List;
-import Helper.JDBCHeper;
+import helper.JDBCHeper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 

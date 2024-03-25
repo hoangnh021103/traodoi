@@ -1,8 +1,8 @@
 
-package Dao.impl;
+package dao.impl;
 
-import Model.GiamGiaChiTiet;
-import Model.LoaiSanPham;
+import model.GiamGiaChiTiet;
+import model.LoaiSanPham;
 import java.util.List;
 
 /**

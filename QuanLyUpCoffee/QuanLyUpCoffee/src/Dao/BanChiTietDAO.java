@@ -1,9 +1,9 @@
 
-package Dao;
+package dao1;
 
-import Dao.impl.InterfaceBanchitiet;
-import Model.BanChiTiet;
-import Helper.JDBCHeper;
+import dao.impl.InterfaceBanchitiet;
+import model.BanChiTiet;
+import helper.JDBCHeper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,17 +28,17 @@ public class BanChiTietDAO implements InterfaceBanchitiet{
         "AND dbo.HoaDon.TTThanhtoan = 0 AND Donchinh = 1 AND BanChiTiet.ID_Hoadon = ?";
     @Override
     public void insert(BanChiTiet Entity) {
-        Helper.JDBCHeper.update(INSERT_SQL, Entity.getID_Ban(), Entity.getID_HoaDon(), Entity.getThoidiemCoNguoi(), Entity.isBanChinh());
+        helper.JDBCHeper.update(INSERT_SQL, Entity.getID_Ban(), Entity.getID_HoaDon(), Entity.getThoidiemCoNguoi(), Entity.isBanChinh());
     }
 
     @Override
     public void update(int idban,int idHoadon) {
-        Helper.JDBCHeper.update(UPDATE_SQL, idban,idHoadon);
+        helper.JDBCHeper.update(UPDATE_SQL, idban,idHoadon);
     }
 
     @Override
     public void delete(int id) {
-        Helper.JDBCHeper.update(DELETE_SQL, id);
+        helper.JDBCHeper.update(DELETE_SQL, id);
     }
 
     @Override
