@@ -31,7 +31,7 @@ public class GiamGia {
         this.ngayKT = ngayKT;
 
     }
-
+//    Hello
     public int getId_GiamGia() {
         return id_GiamGia;
     }
