@@ -80,7 +80,8 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         jLabel4.setForeground(new java.awt.Color(223, 158, 105));
         jLabel4.setText("Mật Khẩu:");
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 0));
+        jButton1.setBackground(new java.awt.Color(153, 102, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Đăng nhập");
         jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(223, 158, 105)));
         jButton1.setBorderPainted(false);
@@ -91,6 +92,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         });
 
         jButton2.setBackground(new java.awt.Color(255, 0, 51));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Thoát");
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(223, 158, 105)));
         jButton2.setBorderPainted(false);
@@ -167,7 +169,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
 
-        jPanel3.setBackground(new java.awt.Color(223, 158, 105));
+        jPanel3.setBackground(new java.awt.Color(153, 102, 0));
 
         jLabel1.setBackground(new java.awt.Color(225, 193, 144));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user (2).png"))); // NOI18N

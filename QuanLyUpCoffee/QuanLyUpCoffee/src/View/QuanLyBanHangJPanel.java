@@ -166,7 +166,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
         jPopupMenu1.setBackground(new java.awt.Color(102, 102, 255));
 
-        mnaddDEsk.setBackground(new java.awt.Color(255, 255, 255));
         mnaddDEsk.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         mnaddDEsk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/plus.png"))); // NOI18N
         mnaddDEsk.setText("Thêm bàn");
@@ -375,7 +374,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 "Mã HĐ", "Ngày", "Thanh toán", "Người tạo", "Tổng tiền (VND)", "Bàn", "SĐT khách hàng"
             }
         ));
-        tblHoadon.setRowHeight(20);
         tblHoadon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblHoadonMousePressed(evt);
@@ -396,7 +394,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         tabs.addTab("Hóa đơn", jPanel2);
@@ -410,7 +408,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 "Mã HD", "Mã SP", "Tên Sản  Phẩm", "SL", "Giá", "Size", "Tiền upsize", "Tổng giá", "Ghi chú"
             }
         ));
-        tblHoadonchitiet.setRowHeight(20);
         tblHoadonchitiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tblHoadonchitietMouseReleased(evt);
@@ -590,7 +587,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 "Mã Sản phẩm", "Tên sản phẩm", "Loại", "Giá giảm (VND)", "Giá gốc (VND)"
             }
         ));
-        tblSanPham.setRowHeight(20);
         jScrollPane2.setViewportView(tblSanPham);
 
         tblSize.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -602,7 +598,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 "Size", "Giá upsize"
             }
         ));
-        tblSize.setRowHeight(20);
         jScrollPane5.setViewportView(tblSize);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
