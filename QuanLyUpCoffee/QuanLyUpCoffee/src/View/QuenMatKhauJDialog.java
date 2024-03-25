@@ -169,7 +169,43 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
     private void btnguimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguimaActionPerformed
         // TODO add your handling code here:
 //        Them lại
-
+if (checkmail()) {
+            return;
+        } else {
+            try {
+                btnguima.setEnabled(true);
+                btnxacnhan.setEnabled(true);
+                Properties p = new Properties();
+                p.put("mail.smtp.auth", "true");
+                p.put("mail.smtp.starttls.enable", "true");
+                p.put("mail.smtp.host", "smtp.office365.com");
+                p.put("mail.smtp.port", 587);
+                // Email gửi 
+                String username = "upcoffee.forwork@hotmail.com";
+                String password = "30042002@";
+                Session s = Session.getInstance(p,
+                        new javax.mail.Authenticator() {
+                            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                                return new javax.mail.PasswordAuthentication(username, password);
+                            }
+                        });
+                String from = username;
+                to = txtEmail.getText();// tài khoản otp gửi đến
+                code = ramdom();
+                String tittle = "Quên mật khẩu - UpCoffee";
+                //
+                Message msg = new MimeMessage(s);
+                msg.setFrom(new InternetAddress(from));
+                msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+                msg.setSubject(tittle);
+                msg.setText("Mã OTP:" + code+"\nĐây là mật khẩu mới của bạn. Vui lòng không để lộ thông tin này!");
+                Transport.send(msg);
+                JOptionPane.showMessageDialog(this, "Đã gửi!");
+                txtMaxacnhan.setEnabled(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_btnguimaActionPerformed
 
     private void btnxacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxacnhanActionPerformed
