@@ -65,14 +65,6 @@ public class BanDao implements InterfaceBan{
         }
         return list.get(0);
     }
-
-//    public Ban selectBydonchinh(int id) {
-//        List<Ban> list = this.selectBySql(SELECT_donchinh, id);
-//        if (list.isEmpty()) {
-//            return null;
-//        }
-//        return list.get(0);
-//    }
     
     @Override
     public List<Ban> selectAll() {
@@ -126,13 +118,6 @@ public class BanDao implements InterfaceBan{
     public List<Ban> selectbanThuc(){
         return selectBySql(SELECT_ALL_Ban_Thuc);
     }
-    
-    //số lường chỗ người trong bàn
-    //có cần số lượng khách hiện tại đang ngồi
-    //chuyển bàn từ khách này sang bàn có khách khác 
-    
-    //hóa đơn bắt trạng thái hóa đơn thanh toán hay chưa thanh toán để hiển thị hóa đơn chi tiết theo bàn tạo hóa đơn đó
-    //
 
     @Override
     public void delete(int id) {

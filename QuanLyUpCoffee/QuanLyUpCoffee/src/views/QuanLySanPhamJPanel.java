@@ -126,7 +126,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cboLoaidouong = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
-        lblHinh = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         txtGia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -243,7 +243,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         );
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(50, 400, 0, 0);
+        jPanel4.setBounds(50, 400, 499, 58);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Mã sản phẩm");
@@ -290,29 +290,27 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(241, 241, 241));
 
-        lblHinh.setBackground(new java.awt.Color(204, 204, 255));
-        lblHinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblHinh.setText("      Click To Donwload Image");
-        lblHinh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHinhMouseClicked(evt);
-            }
-        });
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Remove-bg.ai_1711362921553.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel5);
-        jPanel5.setBounds(120, 90, 210, 290);
+        jPanel5.setBounds(120, 90, 290, 290);
 
         txtGia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(txtGia);
@@ -454,8 +452,8 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jPanel1.add(btnloaidouong);
         btnloaidouong.setBounds(740, 140, 50, 30);
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("QUẢN LÝ ĐỒ UỐNG");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(470, 10, 380, 44);
@@ -528,11 +526,6 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         //CheckSPInuput();
     }//GEN-LAST:event_txtTenSPKeyReleased
-
-    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-        // TODO add your handling code here:
-        chooseImages();
-    }//GEN-LAST:event_lblHinhMouseClicked
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
@@ -699,22 +692,6 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void chooseImages() {
-        JFileChooser file = new JFileChooser("C:\\Users\\admin\\Desktop\\DuAn1-QuanLyUpCofffee\\logos");
-        if (file.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File filechoser = file.getSelectedFile();
-            Ximages.save(filechoser);
-            ImageIcon icon = Ximages.read(filechoser.getName());
-            lblHinh.setIcon(icon);
-            lblHinh.setToolTipText(filechoser.getName());
-            System.out.println(filechoser.getName());
-            System.out.println(lblHinh.getToolTipText());
-//            System.out.println("getPath : " + filechoser.getPath());
-//            System.out.println("getAbsolutePath : " + filechoser.getAbsolutePath());
-//            System.out.println("getName : " + filechoser.getName());
-        }
-    }
-
     private SanPham getInformation() {
         SanPham sp = new SanPham();
         sp.setId_sp(txtMaSP.getText());
@@ -725,7 +702,6 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         sp.setTrangthai(rdosd.isSelected());
         sp.setId_donviSP(daodv.selectByName(cboDonvi.getSelectedItem() + ""));
         System.out.println(sp.getId_donviSP());
-        sp.setHinh(lblHinh.getToolTipText());
         System.out.println(sp.getHinh());
         return sp;
     }
@@ -744,17 +720,10 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
             txtMaSP.setText(sp.getId_sp());
             txtTenSP.setText(sp.getTen_sp());
-//        cboLoaidouong.setSelectedItem(tblSanPhansd.getValueAt(row, 2).toString());
             txtGia.setText(sp.getGia_sp() + "");
             rdoksd.setSelected(!sp.isTrangthai());
             rdosd.setSelected(sp.isTrangthai());
             System.out.println(sp.getHinh());
-            try {
-                lblHinh.setToolTipText(sp.getHinh());
-                lblHinh.setIcon((Ximages.read(sp.getHinh())));
-            } catch (Exception e) {
-//            lblHinh.setIcon(new ImageIcon("unnamed.png"));
-            }
         }
     }
 
@@ -762,7 +731,6 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         txtMaSP.setText("");
         txtTenSP.setText("");
         txtGia.setText("");
-        lblHinh.setIcon(null);
         row = -1;
         identityMasp2();
         if (tabs.getSelectedIndex() == 0) {
@@ -827,9 +795,6 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         if (txtGia.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập giá sản phẩm!");
             txtGia.requestFocus();
-            return true;
-        } else if (lblHinh.getIcon() == null) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn hình sản phẩm!");
             return true;
         } else if (txtMaSP.getText().length() < 3) {
             JOptionPane.showMessageDialog(this, "Mã sản phẩm phải trên 2 kí tự");
@@ -1038,6 +1003,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1045,7 +1011,6 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblHinh;
     private javax.swing.JRadioButton rdoksd;
     private javax.swing.JRadioButton rdosd;
     private javax.swing.JTabbedPane tabs;

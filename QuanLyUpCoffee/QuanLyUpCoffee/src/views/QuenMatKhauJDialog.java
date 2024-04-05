@@ -181,8 +181,8 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
                 p.put("mail.smtp.host", "smtp.office365.com");
                 p.put("mail.smtp.port", 587);
                 // Email gửi 
-                String username = "upcoffee.forwork@hotmail.com";
-                String password = "30042002@";
+                String username = "caubuonviai24@outlook.com";
+                String password = "0941216003z";
                 Session s = Session.getInstance(p,
                         new javax.mail.Authenticator() {
                     protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
@@ -198,7 +198,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
                 msg.setFrom(new InternetAddress(from));
                 msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
                 msg.setSubject(tittle);
-                msg.setText("Mã OTP:" + code + "\nĐây là mật khẩu mới của bạn. Vui lòng không để lộ thông tin này!");
+                msg.setText("Mã OTP: " + code + "\nĐây là mật khẩu mới của bạn. Vui lòng không để lộ thông tin này!");
                 Transport.send(msg);
                 JOptionPane.showMessageDialog(this, "Đã gửi!");
                 txtMaxacnhan.setEnabled(true);

@@ -7,7 +7,7 @@ package helper;
 import java.sql.*;
 public class JDBCHeper {
    static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-   static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=UPCOFFEE";
+   static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=UPCOFFEE3";
    static String user ="sa";
    static String password ="123456";
 

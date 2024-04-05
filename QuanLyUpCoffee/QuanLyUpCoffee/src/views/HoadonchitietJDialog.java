@@ -10,7 +10,6 @@ public class HoadonchitietJDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
         sv.filltotablehoadonchitiet(a);
 
     }

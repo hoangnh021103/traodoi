@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package views;
+
 import java.text.NumberFormat;
 import dao1.HoaDonDAO;
 import model.Hoadon;
@@ -43,9 +44,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author HP
  */
 public class MainThongKeJPanel extends javax.swing.JPanel {
-  DefaultTableModel dtm;
+
+    DefaultTableModel dtm;
     ThongKeDao sv = new ThongKeDao();
-    NhanVien nv=new NhanVien();
+    NhanVien nv = new NhanVien();
 
     /**
      * Creates new form MainThongKeJPanel
@@ -53,9 +55,6 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
     public MainThongKeJPanel() {
 
         initComponents();
-      
-       
-        
 
         fillcombo();
     }
@@ -320,7 +319,6 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(241, 241, 241));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn Hủy Theo Nhân Viên:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        tblhuydon.setForeground(new java.awt.Color(0, 255, 255));
         tblhuydon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -393,8 +391,8 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboDateItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDateItemStateChanged
-       
-        if(cboDate.getSelectedIndex()==0){
+
+        if (cboDate.getSelectedIndex() == 0) {
             filldoanhthu_ngay_label("Hôm Nay");
             fillsosanh_Ngay_label("Hôm Qua");
             filltongspban_ngay_label("Hôm Nay");
@@ -405,156 +403,148 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
 
             filltotablengay();
         }
-        if(cboDate.getSelectedIndex()==1){
+        if (cboDate.getSelectedIndex() == 1) {
             filldoanhthu_thang_label("Tháng Này");
-             fillsosanh_Thang_label("Tháng Trước");
-             filltongspban_thang_label("Tháng Này");
+            fillsosanh_Thang_label("Tháng Trước");
+            filltongspban_thang_label("Tháng Này");
 //             int a=Integer.valueOf(lblDoanhthu.getText());
 //            int b=Integer.valueOf(lblsosanhso.getText());
 //            float c=((b-a)/b);
 //            lblDoanhthu2.setText(c+" %");
             filltotablethang();
         }
-         if(cboDate.getSelectedIndex()==2){
+        if (cboDate.getSelectedIndex() == 2) {
             filldoanhthu_nam_label("Năm Nay");
-             fillsosanh_nam_label("Năm Trước");
-              filltongspban_nam_label("Năm Nay");
+            fillsosanh_nam_label("Năm Trước");
+            filltongspban_nam_label("Năm Nay");
 //             int a=Integer.valueOf(lblDoanhthu.getText());
 //            int b=Integer.valueOf(lblsosanhso.getText());
 //            float c=((b-a)/b);
 //            lblDoanhthu2.setText(c+" %");
             filltotablenam();
-            
+
         }
-        
+
     }//GEN-LAST:event_cboDateItemStateChanged
 
     private void btnTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemActionPerformed
-        if(jDateNgaybd.getDate()==null || jDatengayKt.getDate()==null){
-            JOptionPane .showMessageDialog(this, "vui lòng chọn đủ 2 ngày");
-           
-           return;
-       }
-         Date a = jDateNgaybd.getDate();
+        if (jDateNgaybd.getDate() == null || jDatengayKt.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "vui lòng chọn đủ 2 ngày");
+
+            return;
+        }
+        Date a = jDateNgaybd.getDate();
         Date b = jDatengayKt.getDate();
-        if(a.getTime()>b.getTime() || a==b){
-           JOptionPane.showMessageDialog(btnTimkiem, "Ngày trước phải nhỏ hơn ngày sau");
-              return;
-          
-           
-       }
-        if(jDateNgaybd.getDate()!=null && jDatengayKt.getDate()!=null){
-           sv.Find();
-          
-           
-       }
-        
+        if (a.getTime() > b.getTime() || a == b) {
+            JOptionPane.showMessageDialog(btnTimkiem, "Ngày trước phải nhỏ hơn ngày sau");
+            return;
+        }
+        if (jDateNgaybd.getDate() != null && jDatengayKt.getDate() != null) {
+            sv.Find();
+
+        }
+
     }//GEN-LAST:event_btnTimkiemActionPerformed
 
     private void btnTimkiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiem2ActionPerformed
-        BieuDo bd=new BieuDo();
+        BieuDo bd = new BieuDo();
         bd.setVisible(true);
     }//GEN-LAST:event_btnTimkiem2ActionPerformed
 
     private void btnTimkiem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiem3ActionPerformed
-         int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn gửi mail?", "Gửi Mail Báo Cáo", JOptionPane.YES_NO_OPTION);
-            if (hoi == JOptionPane.YES_OPTION) {
-             if(cboDate.getSelectedIndex()==0){
-            try {
-                sendmailngay("Hàng Ngày","Hôm Nay");
-            } catch (MessagingException ex) {
-                Logger.getLogger(MainThongKeJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn gửi mail?", "Gửi Mail Báo Cáo", JOptionPane.YES_NO_OPTION);
+        if (hoi == JOptionPane.YES_OPTION) {
+            if (cboDate.getSelectedIndex() == 0) {
+                try {
+                    sendmailngay("Hàng Ngày", "Hôm Nay");
+                } catch (MessagingException ex) {
+                    Logger.getLogger(MainThongKeJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (cboDate.getSelectedIndex() == 1) {
+                try {
+                    sendmailngay("Hàng Tháng", "Tháng này");
+                } catch (MessagingException ex) {
+                    Logger.getLogger(MainThongKeJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (cboDate.getSelectedIndex() == 2) {
+                try {
+                    sendmailngay("Hàng Năm", "Năm Nay");
+                } catch (MessagingException ex) {
+                    Logger.getLogger(MainThongKeJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
-        if(cboDate.getSelectedIndex()==1){
-            try {
-                sendmailngay("Hàng Tháng","Tháng này");
-            } catch (MessagingException ex) {
-                Logger.getLogger(MainThongKeJPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if(cboDate.getSelectedIndex()==2){
-            try {
-                sendmailngay("Hàng Năm","Năm Nay");
-            } catch (MessagingException ex) {
-                Logger.getLogger(MainThongKeJPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-            }
-        
+
     }//GEN-LAST:event_btnTimkiem3ActionPerformed
 
-    public void sendmailngay(String a,String b) throws MessagingException {
-                Properties p = new Properties();
-                p.put("mail.smtp.auth", "true");
-                p.put("mail.smtp.starttls.enable", "true");
-                p.put("mail.smtp.host", "smtp.office365.com");
-                p.put("mail.smtp.port", 587);
-                // Email gửi 
-                String username = "duongquoc2002@hotmail.com";
-                String password = "30042002@";
-                Session s = Session.getInstance(p,
-                        new javax.mail.Authenticator() {
-                            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                                return new javax.mail.PasswordAuthentication(username, password);
-                            }
-                        });
-        
-       
-            
-            String mail = JOptionPane.showInputDialog("Nhập mail gửi đến?");
-            if(mail.isEmpty()){
-                JOptionPane.showMessageDialog(btnTimkiem, "vui lòng nhập Mail!");
-                return;
+    public void sendmailngay(String a, String b) throws MessagingException {
+        Properties p = new Properties();
+        p.put("mail.smtp.auth", "true");
+        p.put("mail.smtp.starttls.enable", "true");
+        p.put("mail.smtp.host", "smtp.office365.com");
+        p.put("mail.smtp.port", 587);
+        // Email gửi
+        String username = "caubuonviai24@outlook.com";
+        String password = "0941216003z";
+        Session s = Session.getInstance(p,
+                new javax.mail.Authenticator() {
+            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                return new javax.mail.PasswordAuthentication(username, password);
             }
-            String checkEmail = "\\w+@\\w+(\\.\\w+){1,2}";
-            if (!mail.matches(checkEmail)) {
-                JOptionPane.showMessageDialog(this, "Email không hợp lệ");
-               
-                return;
-            }
-            Message message = new MimeMessage(s);
-            message.setFrom(new InternetAddress("upcoffee.forwork@hotmail.com"));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse(mail)
-            );
-            //body mail
-            message.setSubject("Báo Cáo Thống Kê "+a);//a=hàng ngày
-            String Htmlcode = "<h3 >Kính Gửi Sếp !  </h3>";
-            String Htmlcode1 = "<h4>Tình hình doanh thu, số lượng sản phẩm bán được, số lượng đơn hàng "
-                    + "bán được "+b+" như sau : </h4>";//b=hôm nay
-            String Htmlcode2 = "<h3 >Ngày:  </h3>"+new Date()+"";
-            String Htmlcode3 = " <h3>Doanh Thu: </h3>";
-            String Htmlcode4 = " Tổng Doanh Thu "+b+": "+lblDoanhthu.getText()+"<br>";
-            String Htmlcode5 = " <h3>Đơn Bán: </h3>";
-            String Htmlcode6 = " Tổng Đơn Bán "+b+": "+lblDoanhthu1.getText()+"<br>";
-            String Htmlcode7 = "<h3>Sản Phẩm Bán: </h3>";
-            String Htmlcode8 = " Tổng Sản Phẩm Bán "+b+": "+lbltongsanpham.getText()+"<br>";
-            message.setContent(Htmlcode+Htmlcode1+Htmlcode2+Htmlcode3+Htmlcode4+Htmlcode5+Htmlcode6+Htmlcode7+Htmlcode8, "text/html;charset=UTF-8");
-            
-            Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Đã gửi!");
-            
-        
+        });
+        String mail = JOptionPane.showInputDialog("Nhập mail gửi đến?");
+        if (mail.isEmpty()) {
+            JOptionPane.showMessageDialog(btnTimkiem, "vui lòng nhập Mail!");
+            return;
+        }
+        String checkEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+        if (!mail.matches(checkEmail)) {
+            JOptionPane.showMessageDialog(this, "Email không hợp lệ");
+
+            return;
+        }
+        Message message = new MimeMessage(s);
+        message.setFrom(new InternetAddress("caubuonviai24@outlook.com"));
+        message.setRecipients(
+                Message.RecipientType.TO,
+                InternetAddress.parse(mail)
+        );
+        //body mail
+        message.setSubject("Báo Cáo Thống Kê " + a);//a=hàng ngày
+        String Htmlcode = "<h3 >Kính Gửi Sếp !  </h3>";
+        String Htmlcode1 = "<h4>Tình hình doanh thu, số lượng sản phẩm bán được, số lượng đơn hàng "
+                + "bán được " + b + " như sau : </h4>";//b=hôm nay
+        String Htmlcode2 = "<h3 >Ngày:  </h3>" + new Date() + "";
+        String Htmlcode3 = " <h3>Doanh Thu: </h3>";
+        String Htmlcode4 = " Tổng Doanh Thu " + b + ": " + lblDoanhthu.getText() + "<br>";
+        String Htmlcode5 = " <h3>Đơn Bán: </h3>";
+        String Htmlcode6 = " Tổng Đơn Bán " + b + ": " + lblDoanhthu1.getText() + "<br>";
+        String Htmlcode7 = "<h3>Sản Phẩm Bán: </h3>";
+        String Htmlcode8 = " Tổng Sản Phẩm Bán " + b + ": " + lbltongsanpham.getText() + "<br>";
+        message.setContent(Htmlcode + Htmlcode1 + Htmlcode2 + Htmlcode3 + Htmlcode4 + Htmlcode5 + Htmlcode6 + Htmlcode7 + Htmlcode8, "text/html;charset=UTF-8");
+        Transport.send(message);
+        JOptionPane.showMessageDialog(this, "Đã gửi!");
     }
+
 
     private void btnTimkiem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiem4ActionPerformed
 //       int index=tblsoluong.getSelectedRow();
 //        new chon((DefaultTableModel) tblsoluong.getModel(),(DefaultTableModel) tblhuydon.getModel()).setVisible(true);
- int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn in PDF?", "In Thống Kê", JOptionPane.YES_NO_OPTION);
-            if (hoi == JOptionPane.YES_OPTION) {
-                 if(cboDate.getSelectedIndex()==0){
-            new PrintThongKe().xuatpdf_ngay((DefaultTableModel) tblsoluong.getModel(),(DefaultTableModel) tblhuydon.getModel());
-        }
-        if(cboDate.getSelectedIndex()==1){
-            new PrintThongKe().xuatpdf_thang((DefaultTableModel) tblsoluong.getModel(),(DefaultTableModel) tblhuydon.getModel());
-        }
-         if(cboDate.getSelectedIndex()==2){
-            new PrintThongKe().xuatpdf_nam((DefaultTableModel) tblsoluong.getModel(),(DefaultTableModel) tblhuydon.getModel());
-        }
+        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn in PDF?", "In Thống Kê", JOptionPane.YES_NO_OPTION);
+        if (hoi == JOptionPane.YES_OPTION) {
+            if (cboDate.getSelectedIndex() == 0) {
+                new PrintThongKe().xuatpdf_ngay((DefaultTableModel) tblsoluong.getModel(), (DefaultTableModel) tblhuydon.getModel());
             }
-       
+            if (cboDate.getSelectedIndex() == 1) {
+                new PrintThongKe().xuatpdf_thang((DefaultTableModel) tblsoluong.getModel(), (DefaultTableModel) tblhuydon.getModel());
+            }
+            if (cboDate.getSelectedIndex() == 2) {
+                new PrintThongKe().xuatpdf_nam((DefaultTableModel) tblsoluong.getModel(), (DefaultTableModel) tblhuydon.getModel());
+            }
+        }
+
     }//GEN-LAST:event_btnTimkiem4ActionPerformed
 
 
@@ -594,7 +584,6 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
 //            model.addElement(year);
 //        }
 //    }
-
 //    public void fillComBoBoxthang() {
 //        DefaultComboBoxModel model = (DefaultComboBoxModel) cboDate1.getModel();
 //        model.removeAllElements();
@@ -604,84 +593,77 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
 //            model.addElement(year);
 //        }
 //    }
-
     private void filltotablengay() {
         DefaultTableModel model = (DefaultTableModel) tblsoluong.getModel();
         model.setRowCount(0);
         DefaultTableModel model1 = (DefaultTableModel) tblhuydon.getModel();
         model1.setRowCount(0);
-        
+
         List< Object[]> list = sv.getDoanhThu_ngay_table();
         List<Object[]> list1 = sv.getdonhuyngay();
-        
+
         for (Object[] row : list) {
             model.addRow(row);
 
         }
         for (Object[] row : list1) {
-            String ma=row[0].toString();
-                 model1.addRow(new Object[]{row[0], row[1],sv.getsphuyngay(ma)});
-            
-               
+            String ma = row[0].toString();
+            model1.addRow(new Object[]{row[0], row[1], sv.getsphuyngay(ma)});
 
         }
 
     }
-     private void filltotablethang() {
+
+    private void filltotablethang() {
         DefaultTableModel model = (DefaultTableModel) tblsoluong.getModel();
         model.setRowCount(0);
         DefaultTableModel model1 = (DefaultTableModel) tblhuydon.getModel();
         model1.setRowCount(0);
-        
+
         List<Object[]> list = sv.getDoanhThu_Thang_table();
         List<Object[]> list1 = sv.getdonhuythang();
-        
+
         for (Object[] row : list) {
             model.addRow(row);
 
         }
         for (Object[] row : list1) {
-            String ma=row[0].toString();
-                 model1.addRow(new Object[]{row[0], row[1],sv.getsphuythang(ma)});
-            
-               
+            String ma = row[0].toString();
+            model1.addRow(new Object[]{row[0], row[1], sv.getsphuythang(ma)});
 
         }
 
     }
-     private void filltotablenam() {
+
+    private void filltotablenam() {
         DefaultTableModel model = (DefaultTableModel) tblsoluong.getModel();
         model.setRowCount(0);
         DefaultTableModel model1 = (DefaultTableModel) tblhuydon.getModel();
         model1.setRowCount(0);
-        
+
         List<Object[]> list = sv.getDoanhThu_nam_table();
         List<Object[]> list1 = sv.getdonhuynam();
-        
+
         for (Object[] row : list) {
             model.addRow(row);
 
         }
         for (Object[] row : list1) {
-            String ma=row[0].toString();
-                 model1.addRow(new Object[]{row[0], row[1],sv.getsphuynam(ma)});
-            
-               
+            String ma = row[0].toString();
+            model1.addRow(new Object[]{row[0], row[1], sv.getsphuynam(ma)});
 
         }
 
     }
-    
-    
 
     public void filldoanhthu_ngay_label(String a) {
-        
+
         List<Long> list = sv.selectdaonhthu_ngay_label();
-        
+
         lbldoanhthutext.setText("Doanh Thu " + a);
         for (Long tien : list) {
 
-            String patternTienTe = "###,###,###,###,### "+"VND"; 
+            String patternTienTe = "###,###,###,###,### " + "VND";
             DecimalFormat formatTienTe = new DecimalFormat(patternTienTe);
             String stringTienTe = formatTienTe.format(tien);
             lblDoanhthu.setText(stringTienTe);
@@ -689,9 +671,9 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         }
         List<Integer> list1 = sv.selecttongdon_ngay_label();
         lbldoanhthutext1.setText("Tổng Đơn Đã Bán " + a);
-          for (Integer tien1 : list1) {
+        for (Integer tien1 : list1) {
 
-           String stringTienTe =String.valueOf(tien1);
+            String stringTienTe = String.valueOf(tien1);
             lblDoanhthu1.setText(stringTienTe);
 
         }
@@ -710,9 +692,9 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
     }
 
     private void fillcombo() {
-        String []a= {"Hôm Nay","Tháng Này","Năm Này"};
-        DefaultComboBoxModel modelcb=(DefaultComboBoxModel) cboDate.getModel();
-        for(int i=0;i<a.length;i++){
+        String[] a = {"Hôm Nay", "Tháng Này", "Năm Này"};
+        DefaultComboBoxModel modelcb = (DefaultComboBoxModel) cboDate.getModel();
+        for (int i = 0; i < a.length; i++) {
             modelcb.addElement(a[i]);
         }
     }
@@ -722,37 +704,38 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         lbldoanhthutext.setText("Doanh Thu " + a);
         for (Long tien : list) {
 
-            String patternTienTe = "###,###,###,###,### "+"VND"; 
+            String patternTienTe = "###,###,###,###,### " + "VND";
             DecimalFormat formatTienTe = new DecimalFormat(patternTienTe);
             String stringTienTe = formatTienTe.format(tien);
             lblDoanhthu.setText(stringTienTe);
 
         }
-         List<Integer> list1 = sv.selecttongdon_thang_label();
+        List<Integer> list1 = sv.selecttongdon_thang_label();
         lbldoanhthutext1.setText("Tổng Đơn Đã Bán " + a);
-          for (Integer tien1 : list1) {
+        for (Integer tien1 : list1) {
 
-           String stringTienTe =String.valueOf(tien1);
+            String stringTienTe = String.valueOf(tien1);
             lblDoanhthu1.setText(stringTienTe);
 
         }
     }
+
     private void filldoanhthu_nam_label(String a) {
         List<Long> list = sv.selectdaonhthu_nam_label();
         lbldoanhthutext.setText("Doanh Thu " + a);
         for (Long tien : list) {
 
-            String patternTienTe = "###,###,###,###,### "+"VND"; 
+            String patternTienTe = "###,###,###,###,### " + "VND";
             DecimalFormat formatTienTe = new DecimalFormat(patternTienTe);
             String stringTienTe = formatTienTe.format(tien);
             lblDoanhthu.setText(stringTienTe);
 
         }
-          List<Integer> list1 = sv.selecttongdon_nam_label();
+        List<Integer> list1 = sv.selecttongdon_nam_label();
         lbldoanhthutext1.setText("Tổng Đơn Đã Bán " + a);
-          for (Integer tien1 : list1) {
+        for (Integer tien1 : list1) {
 
-           String stringTienTe =String.valueOf(tien1);
+            String stringTienTe = String.valueOf(tien1);
             lblDoanhthu1.setText(stringTienTe);
 
         }
@@ -760,10 +743,10 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
 
     private void fillsosanh_Thang_label(String a) {
         List<Long> list = sv.selectsosanh_Thang_label();
-        lblsosanh.setText("Doanh Thu "+a);
-         for (Long tien : list) {
+        lblsosanh.setText("Doanh Thu " + a);
+        for (Long tien : list) {
 
-            String patternTienTe = "###,###,###,###,### "+"VND"; 
+            String patternTienTe = "###,###,###,###,### " + "VND";
             DecimalFormat formatTienTe = new DecimalFormat(patternTienTe);
             String stringTienTe = formatTienTe.format(tien);
             lblsosanhso.setText(stringTienTe);
@@ -773,22 +756,23 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
 
     private void fillsosanh_Ngay_label(String a) {
         List<Long> list = sv.selectsosanh_ngay_label();
-        lblsosanh.setText("Doanh Thu "+a);
-         for (Long tien : list) {
+        lblsosanh.setText("Doanh Thu " + a);
+        for (Long tien : list) {
 
-            String patternTienTe = "###,###,###,###,### "+"VND"; 
+            String patternTienTe = "###,###,###,###,### " + "VND";
             DecimalFormat formatTienTe = new DecimalFormat(patternTienTe);
             String stringTienTe = formatTienTe.format(tien);
             lblsosanhso.setText(stringTienTe);
 
         }
     }
-      private void fillsosanh_nam_label(String a) {
-        List<Long> list = sv.selectsosanh_nam_label();
-        lblsosanh.setText("Doanh Thu "+a);
-         for (Long tien : list) {
 
-            String patternTienTe = "###,###,###,###,### "+"VND"; 
+    private void fillsosanh_nam_label(String a) {
+        List<Long> list = sv.selectsosanh_nam_label();
+        lblsosanh.setText("Doanh Thu " + a);
+        for (Long tien : list) {
+
+            String patternTienTe = "###,###,###,###,### " + "VND";
             DecimalFormat formatTienTe = new DecimalFormat(patternTienTe);
             String stringTienTe = formatTienTe.format(tien);
             lblsosanhso.setText(stringTienTe);
@@ -797,11 +781,11 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
     }
 
     private void filltongspban_thang_label(String a) {
-           List<Integer> list1 = sv.selecttongsp_thang_label();
+        List<Integer> list1 = sv.selecttongsp_thang_label();
         lbldoanhthutext2.setText("Tổng Sản Phẩm Bán " + a);
-          for (Integer tien1 : list1) {
+        for (Integer tien1 : list1) {
 
-           String stringTienTe =String.valueOf(tien1);
+            String stringTienTe = String.valueOf(tien1);
             lbltongsanpham.setText(stringTienTe);
 
         }
@@ -810,20 +794,20 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
     private void filltongspban_ngay_label(String a) {
         List<Integer> list1 = sv.selecttongsp_ngay_label();
         lbldoanhthutext2.setText("Tổng Sản Phẩm Bán " + a);
-          for (Integer tien1 : list1) {
+        for (Integer tien1 : list1) {
 
-           String stringTienTe =String.valueOf(tien1);
+            String stringTienTe = String.valueOf(tien1);
             lbltongsanpham.setText(stringTienTe);
 
         }
     }
 
     private void filltongspban_nam_label(String a) {
-         List<Integer> list1 = sv.selecttongsp_nam_label();
+        List<Integer> list1 = sv.selecttongsp_nam_label();
         lbldoanhthutext2.setText("Tổng Sản Phẩm Bán " + a);
-          for (Integer tien1 : list1) {
+        for (Integer tien1 : list1) {
 
-           String stringTienTe =String.valueOf(tien1);
+            String stringTienTe = String.valueOf(tien1);
             lbltongsanpham.setText(stringTienTe);
 
         }

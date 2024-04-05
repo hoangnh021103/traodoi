@@ -23,6 +23,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
      */
     DonViSanPhamDao dao = new DonViSanPhamDao();
     int row;
+
     public QLDonViDoUongJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -74,6 +75,12 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         jLabel3.setText("Mã Đơn Vị");
 
         jLabel4.setText("Tên Đơn Vị ");
+
+        txtmadonvi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmadonviActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Đơn Vị Đồ Uống");
@@ -258,6 +265,10 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbldonviMouseClicked
 
+    private void txtmadonviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmadonviActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmadonviActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,13 +311,12 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         });
     }
 
-    
     private void filltableDonVi() {
         DefaultTableModel model = (DefaultTableModel) tbldonvi.getModel();
         model.setRowCount(0);
         List<DonViSanPham> list = dao.selectAll();
         for (DonViSanPham x : list) {
-            model.addRow(new Object[]{x.getID_DonviSP(), x.getTenDonvi(), x.getKichthuoc(),x.getThemTien()});
+            model.addRow(new Object[]{x.getID_DonviSP(), x.getTenDonvi(), x.getKichthuoc(), x.getThemTien()});
         }
     }
 
@@ -346,14 +356,14 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
     private boolean checknull() {
         String chuoi = "^[a-zA-Z]$";
         String ktso = "^[0-9]{0,9}$";
+        if (txtmadonvi.getText().trim() == "") {
+            JOptionPane.showMessageDialog(this, "Không được bỏ trống mã đơn vị");
+            return true;
+        }
         if (txttendonvi.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "tên  đơn vị không để trống");
             return true;
-        } //        else if (!txttendonvi.getText().matches(chuoi)) {
-        //            JOptionPane.showMessageDialog(this, "đơn vị đồ uống nhập không đúng định dạng");
-        //            return true;
-        //        }
-        else if (txtkichthuoc.getText().equals("")) {
+        } else if (txtkichthuoc.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "kích thước  nhập không được để trống");
             return true;
 

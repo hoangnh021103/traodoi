@@ -42,14 +42,13 @@ public class PrintPDF {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         try {
 // anh em khi code muốn chạy được phần in hóa đơn thì đổi source file nơi lưu trữ( cái dưới) và font chữ ( 2 cái dưới, front chữ đã tải và để trong file dự án rồi chỉ việc đổi link đường dẫn tới nó thôi) cre; Phong
-            File newFile = new File("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\printhoadon\\HoaDon_" + mahd + ".pdf");
+            File newFile = new File("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\printhoadon\\Hoa_Don_UPCOFFEE" + mahd + ".pdf");
             PdfWriter.getInstance(document, new FileOutputStream(newFile.getAbsoluteFile().getPath()));
             document.open();
-            Font f = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+            Font f = new Font(BaseFont.createFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             f.setSize(16);
-            Font f2 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+            Font f2 = new Font(BaseFont.createFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             f2.setSize(14);
-            //f.setStyle(Font.NORMAL);
             Paragraph title1 = new Paragraph("UpCoffee", FontFactory.getFont(FontFactory.HELVETICA, 20, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
             //Chapter chapter1 = new Chapter(title1, 1);
             title1.setAlignment(Element.ALIGN_CENTER);
@@ -57,7 +56,7 @@ public class PrintPDF {
             PdfPTable a = new PdfPTable(2);
             a.setSpacingBefore(35);
             
-            PdfPCell a8 = new PdfPCell(new Phrase("Địa chỉ: 82 Dịch Vọng Hậu, Cầu Giấy, Hà Nội.", f2));
+            PdfPCell a8 = new PdfPCell(new Phrase("Địa chỉ: FPT Polytecnic Kiều Mai, Phúc Diễn, Từ Liêm, Hà Nội", f2));
             a.addCell(a8).setBorder(0);
             PdfPCell a7 = new PdfPCell(new Phrase("", f2));
             a.addCell(a7).setBorder(0);

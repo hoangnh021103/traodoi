@@ -26,7 +26,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
             txtTk.setEditable(false);
             txtTk.setEnabled(false);
             txtTk.setText(Auth.user.getUserName());
-
         }
     }
 
@@ -74,7 +73,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         jLabel4.setText("Mật khẩu mới:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Xác nhận:");
+        jLabel5.setText("Nhập lại mk mới:");
 
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -249,9 +248,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         String matkhau = new String(txtPassOld.getText());
         String matkhauMoi = new String(txtPassNew1.getText());
         String matkhauMoi2 = new String(txtPassNew2.getText());
-//        if(txtMaNV.getText().isEmpty()){
-//            MsgBox.alert(this, "Mã nhân viên không được bỏ trống!!!");
-//        }
         if (!manv.equalsIgnoreCase(Auth.user.getUserName())) {
             MsgBox.alert(this, "Sai tên đăng nhập");
         } else if (!matkhau.equals(Auth.user.getPass())) {

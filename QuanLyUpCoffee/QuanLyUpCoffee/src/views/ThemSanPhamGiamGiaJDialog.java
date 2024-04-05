@@ -271,7 +271,6 @@ public class ThemSanPhamGiamGiaJDialog extends javax.swing.JDialog {
                     continue;
                 }
                 if (date.before(gg.getNgayBD()) || date.after(gg.getNgayKT())) {
-                    System.out.println(magg);
                     model.addRow(new Object[]{x.getId_sp(), x.getTen_sp(),
                         daoLSP.selectNameByID(x.getId_loaiSP()), x.getGia_sp()
                     });
@@ -287,13 +286,8 @@ public class ThemSanPhamGiamGiaJDialog extends javax.swing.JDialog {
     private GiamGiaChiTiet getform() {
         GiamGiaChiTiet gg = new GiamGiaChiTiet();
         row = tblSanPham.getSelectedRow();
-        System.out.println(magg);
         gg.setidgiamgia(magg);
-
-        System.out.println(gg.getidgiamgia());
-
         gg.setidSp(tblSanPham.getValueAt(row, 0).toString());
-        System.out.println(gg.getidSP());
         gg.setPhantramgiam(Integer.parseInt(txtGiam.getText()));
         return gg;
     }

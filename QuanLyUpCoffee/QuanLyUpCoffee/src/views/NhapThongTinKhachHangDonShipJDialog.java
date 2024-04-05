@@ -227,6 +227,10 @@ static String dayNow;
         if (checknull()) return;
         if (checknumberphone()) return;
         if (checknumber()) return;
+        if(txtTienShip.equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tiền ship");
+            return;
+        }
         if (txtTienShip.getText().length() < 4 && Integer.parseInt(txtTienShip.getText()) != 0) {
             JOptionPane.showMessageDialog(this, "Tiền ship phải 1.000 đồng trở lên");
             return;

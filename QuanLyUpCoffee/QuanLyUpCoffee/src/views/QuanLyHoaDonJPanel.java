@@ -8,8 +8,6 @@ import model.NhanVien;
 import javax.swing.DefaultComboBoxModel;
 
 public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
-
-
     SerHoaDon sv = new SerHoaDon();
     Hoadon hd = new Hoadon();
 
@@ -306,9 +304,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
             if (cbotrangthai.getSelectedIndex() == 0) {
                 sv.Find_dathanhtoan();
             }
-
         }
-
         if (Jdatebatdau.getDate() == null && Jdateketthuc.getDate() != null) {
             if (cbotrangthai.getSelectedIndex() == 2) {
                 sv.Find_1ngay(Jdateketthuc.getDate());
