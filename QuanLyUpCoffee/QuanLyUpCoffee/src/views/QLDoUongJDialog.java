@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
@@ -23,7 +24,7 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
      */
     LoaiSanPhamDao daolsp = new LoaiSanPhamDao();
     int row;
-    
+
     public QLDoUongJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -127,6 +128,8 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
         jLabel3.setText("LOẠI ĐỒ UỐNG");
 
         jLabel4.setText("MÃ LOẠI ĐÔ UỐNG");
+
+        txtidloai.setEnabled(false);
 
         btnsua.setText("SỬA");
         btnsua.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +236,6 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
         // TODO add your handling code here:
-
         insert();
     }//GEN-LAST:event_btnthemActionPerformed
 
@@ -246,7 +248,6 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
         update();
     }//GEN-LAST:event_btnsuaActionPerformed
 
-    
     private void filltableDoUong() { // hieenr thij len bang
         DefaultTableModel model = (DefaultTableModel) tbltentheloai.getModel();
         model.setRowCount(0);
@@ -296,15 +297,12 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
 
     //kiểm tra dữ liêu
     private boolean checknull() {
-        String kt = "^[a- zA- Z]+$";
+
         if (txttenloai.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "loại đồ uống không được để trống");
             return true;
         } else if (txttenloai.getText().length() < 3) {
             JOptionPane.showMessageDialog(this, "loại đồ uống không được dưới 3 kí tự");
-            return true;
-        } else if (!txttenloai.getText().matches(kt)) {
-            JOptionPane.showMessageDialog(this, "nhập sai định dạng loại đồ uống");
             return true;
         }
         return false;
@@ -342,7 +340,6 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
                 e.printStackTrace();
             }
         }
-
     }
 
     // cập nhập
@@ -383,7 +380,7 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
             }
         } else ;
     }
-    
+
     /**
      * @param args the command line arguments
      */

@@ -712,7 +712,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (evt.isPopupTrigger() == true) {
             jPopupMenu1.show(this, evt.getX(), evt.getY());
-            //System.out.println(evt.getX()+"/"+ evt.getY());
         }
     }//GEN-LAST:event_pnBanMouseReleased
 
@@ -727,12 +726,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cboLoaidouongItemStateChanged
 
     private void mnaddDEskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnaddDEskActionPerformed
-        // TODO add your handling code here:
-//        ThemBanJDialog themBan = new ThemBanJDialog(null, true);
-//        themBan.setVisible(true);
-//        filltoDesk();
-//        filltoDesktaiquay();
-//        updateUI();
         if (Auth.isManager()) {
             ThemBanJDialog themBan = new ThemBanJDialog(null, true);
             themBan.setVisible(true);
@@ -904,7 +897,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         }
         filltoHoadonCTT();
         filltoDesk();
-
         filltoDesktaiquay();
     }//GEN-LAST:event_mnChuyenbanActionPerformed
 
@@ -921,7 +913,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         } else {
             DAOBanCT.delete(numberDesk.getIdBan());
             DAOBAN.delete(numberDesk.getIdBan());
-
             filltoDesk();
             filltoDesktaiquay();
         }
@@ -956,23 +947,11 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblHoadonMousePressed
 
     private void mnNhomBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnNhomBanActionPerformed
-        // TODO add your handling code here:
-//        if (!lblMaHoaDon.getText().equals("......")) {
-//            ChucNangGopBanJDialog cnGopBan = new ChucNangGopBanJDialog(null, true, numberDesk.getIdBan(), Integer.parseInt(lblMaHoaDon.getText()));
-//            cnGopBan.setVisible(true);
-//            DAOBAN.updateHoatDong(cnGopBan.mabangop);
-//            filltoDesk();
-//            filltoHoadonCTT();
-//        }else{
-//            JOptionPane.showMessageDialog(this, "Bàn chưa có đơn");
-//        }
+
         List<BanChiTiet> listbct = DAOBanCT.selectByIdBan(numberDesk.getIdBan());
         if (listbct.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bàn chưa có đơn");
-        } //else if (listbct.get(0).isBanChinh() == false) {
-        //                mnGopBan.setEnabled(false);
-        //            }
-        else {
+        } else {
             List<Ban> list = DAOBAN.selectAll_banthuc();
             if (list.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Hiện tại không có bàn để nhóm");
@@ -984,7 +963,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 return;
             }
             filltoDesk();
-//                filltoDeskgiaohang();
             filltoDesktaiquay();
             filltoHoadonCTT();
         }
@@ -1081,44 +1059,44 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_mnSuaThongtinkhachActionPerformed
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
-        if(evt.getClickCount()==2){
-                if (lblMaHoaDon.getText().equals("......")) {
-        JOptionPane.showMessageDialog(this, "Chưa tạo đơn");
-        return;
-    }
-    
-    int row = tblSanPham.getSelectedRow(); // Get the selected row
-    if (row < 0) {
-        JOptionPane.showMessageDialog(this, "chưa chọn sản phẩm");
-        return;
-    }
-    
-    // Get the product code from the selected row in the table
-    String masp = tblSanPham.getValueAt(row, 0).toString();
+        if (evt.getClickCount() == 2) {
+            if (lblMaHoaDon.getText().equals("......")) {
+                JOptionPane.showMessageDialog(this, "Chưa tạo đơn");
+                return;
+            }
 
-    if (!DAOHDCHITIET.selectByIdHD_TT0(Integer.parseInt(lblMaHoaDon.getText()), masp).isEmpty()) {
-        // If the product is marked as canceled, prompt to restore and modify quantity
-        if (JOptionPane.showConfirmDialog(this, "Sản phẩm này đã bị hủy bạn có muốn khôi phục và sửa số lượng?") == JOptionPane.YES_OPTION) {
-            HoaDonChiTiet hdtc = DAOHDCHITIET.selectById(Integer.parseInt(lblMaHoaDon.getText()), masp);
-            hdtc.setTrangThai(true);
-            DAOHDCHITIET.update_TT(hdtc);
-            suaSl(masp, Integer.parseInt(lblMaHoaDon.getText())); // Modify quantity
-        }
-    } else if (!DAOHDCHITIET.selectByIdHD_TT1(Integer.parseInt(lblMaHoaDon.getText()), masp).isEmpty()) {
-        // If the product is already in the invoice, prompt to modify quantity
-        if (JOptionPane.showConfirmDialog(this, "Đồ uống này đã có trong hóa đơn, vui lòng sửa số lượng\n WARNNING: Size không thể thay đổi!") == JOptionPane.YES_OPTION) {
-            suaSl(masp, Integer.parseInt(lblMaHoaDon.getText())); // Modify quantity
-        }
-    } else {
-        // If the product is not in the invoice, open a dialog to enter quantity
-        NhapsoluongSanPhamJDialog a = new NhapsoluongSanPhamJDialog(null, true, masp, Integer.parseInt(lblMaHoaDon.getText()));
-        a.setVisible(true);
-        filltoTableHDCT(); // Update invoice details table
-        Hoadon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
-        hd.setThanhTien(Integer.parseInt(txtTongTien.getText()));
-        DAOHOADON.updateThanhtien(hd); // Update total amount
-    }
-    filltoHoadonCTT(); // Fill invoice details
+            int row = tblSanPham.getSelectedRow(); // Get the selected row
+            if (row < 0) {
+                JOptionPane.showMessageDialog(this, "chưa chọn sản phẩm");
+                return;
+            }
+
+            // Get the product code from the selected row in the table
+            String masp = tblSanPham.getValueAt(row, 0).toString();
+
+            if (!DAOHDCHITIET.selectByIdHD_TT0(Integer.parseInt(lblMaHoaDon.getText()), masp).isEmpty()) {
+                // If the product is marked as canceled, prompt to restore and modify quantity
+                if (JOptionPane.showConfirmDialog(this, "Sản phẩm này đã bị hủy bạn có muốn khôi phục và sửa số lượng?") == JOptionPane.YES_OPTION) {
+                    HoaDonChiTiet hdtc = DAOHDCHITIET.selectById(Integer.parseInt(lblMaHoaDon.getText()), masp);
+                    hdtc.setTrangThai(true);
+                    DAOHDCHITIET.update_TT(hdtc);
+                    suaSl(masp, Integer.parseInt(lblMaHoaDon.getText())); // Modify quantity
+                }
+            } else if (!DAOHDCHITIET.selectByIdHD_TT1(Integer.parseInt(lblMaHoaDon.getText()), masp).isEmpty()) {
+                // If the product is already in the invoice, prompt to modify quantity
+                if (JOptionPane.showConfirmDialog(this, "Đồ uống này đã có trong hóa đơn, vui lòng sửa số lượng\n WARNNING: Size không thể thay đổi!") == JOptionPane.YES_OPTION) {
+                    suaSl(masp, Integer.parseInt(lblMaHoaDon.getText())); // Modify quantity
+                }
+            } else {
+                // If the product is not in the invoice, open a dialog to enter quantity
+                NhapsoluongSanPhamJDialog a = new NhapsoluongSanPhamJDialog(null, true, masp, Integer.parseInt(lblMaHoaDon.getText()));
+                a.setVisible(true);
+                filltoTableHDCT(); // Update invoice details table
+                Hoadon hd = DAOHOADON.selectById(Integer.parseInt(lblMaHoaDon.getText()));
+                hd.setThanhTien(Integer.parseInt(txtTongTien.getText()));
+                DAOHOADON.updateThanhtien(hd); // Update total amount
+            }
+            filltoHoadonCTT(); // Fill invoice details
         }
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
@@ -1617,7 +1595,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 } else if (tiengiamint == 0) {
                     return 0;
                 } else {
-                    System.out.println("heelosssss");
                     int soThu2 = Integer.parseInt(a.charAt(2) + "");
                     if (soThu2 < 5) {
                         a = a.substring(0, 2);;
