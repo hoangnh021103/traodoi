@@ -54,6 +54,7 @@ public class PrintThongKe {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
         String fileName = "ThongKe_" + sdf.format(date) + ".pdf";
         try {
             File newFile = new File("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\printthongke\\" + fileName);
@@ -62,7 +63,7 @@ public class PrintThongKe {
             Font f = FontFactory.getFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 16);
             Font f2 = FontFactory.getFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 12);
             Font f3 = FontFactory.getFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 10);
-            Font f4 = FontFactory.getFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 14);
+            Font f4 = FontFactory.getFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 14);
             f4.setColor(BaseColor.RED);
 
             Paragraph title1 = new Paragraph("UpCoffee", f3);
@@ -73,11 +74,11 @@ public class PrintThongKe {
             title2.setAlignment(Element.ALIGN_LEFT);
             document.add(title2);
 
-            Paragraph title3 = new Paragraph("Hotline: 0964303432", f3);
+            Paragraph title3 = new Paragraph("Contact: https://www.highlandscoffee.com.vn", f3);
             title3.setAlignment(Element.ALIGN_LEFT);
             document.add(title3);
 
-            Paragraph title4 = new Paragraph("Ngày: " + sdf.format(date), f3);
+            Paragraph title4 = new Paragraph("Ngày: " + sdf1.format(date), f3);
             title4.setAlignment(Element.ALIGN_LEFT);
             document.add(title4);
 
