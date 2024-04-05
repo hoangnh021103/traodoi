@@ -329,7 +329,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         txttienThoi.setText("0");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel18.setText("Tiền thối:");
+        jLabel18.setText("Tiền trả:");
 
         btnThanhToan.setBackground(new java.awt.Color(153, 0, 51));
         btnThanhToan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -472,14 +472,14 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                             .addGroup(pnHoadonLayout.createSequentialGroup()
                                 .addGroup(pnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnHoadonLayout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnHoadonLayout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblMaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
+                                        .addComponent(lblMaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnHoadonLayout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(24, 24, 24)
                                 .addGroup(pnHoadonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
                                     .addGroup(pnHoadonLayout.createSequentialGroup()
@@ -1451,7 +1451,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                     mnGopBan.setEnabled(false);
                     mnSua.setEnabled(false);
                 }
-                System.out.println(numberDesk.getIdBan());
             }
         }
     }

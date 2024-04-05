@@ -1,6 +1,4 @@
-
 package helper;
-
 
 //import DAO.BanChitietDAO;
 import dao1.BanChiTietDAO;
@@ -48,114 +46,94 @@ import java.text.SimpleDateFormat;
  * @author Admin
  */
 public class PrintThongKe {
+
     HoaDonDAO hddao = new HoaDonDAO();
     BanChiTietDAO bctdao = new BanChiTietDAO();
-    public void xuatpdf_ngay(DefaultTableModel model,DefaultTableModel model1){
+
+    public void xuatpdf_ngay(DefaultTableModel model, DefaultTableModel model1) {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-          Date date = new Date();
-        // Định dạng tên tập tin PDF với thời gian hiện tại
+        Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        String fileName = "HoaDon_" + sdf.format(date) + ".pdf";
+        String fileName = "ThongKe_" + sdf.format(date) + ".pdf";
         try {
-            File newFile = new File("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\printthongke\\");
-            PdfWriter.getInstance(document, new FileOutputStream(newFile.getAbsoluteFile().getPath()));
+            File newFile = new File("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\printthongke\\" + fileName);
+            PdfWriter.getInstance(document, new FileOutputStream(newFile.getAbsolutePath()));
             document.open();
-            Font f = new Font(BaseFont.createFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
-            f.setSize(16);
-            Font f2 = new Font(BaseFont.createFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
-            f2.setSize(12);
-            Font f3 = new Font(BaseFont.createFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
-            f3.setSize(10);
-           
-             Font f4 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
-            f4.setSize(14);
+            Font f = FontFactory.getFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 16);
+            Font f2 = FontFactory.getFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 12);
+            Font f3 = FontFactory.getFont("C:\\DuAn_1\\traodoi1\\QuanLyUpCoffee\\QuanLyUpCoffee\\Font\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 10);
+            Font f4 = FontFactory.getFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED, 14);
             f4.setColor(BaseColor.RED);
-            //f.setStyle(Font.NORMAL);
-            Paragraph title1 = new Paragraph("UpCoffee",f3);
-            //Chapter chapter1 = new Chapter(title1, 1);
+
+            Paragraph title1 = new Paragraph("UpCoffee", f3);
             title1.setAlignment(Element.ALIGN_LEFT);
             document.add(title1);
-             Paragraph title2 = new Paragraph("Địa chỉ: Kiều Mai, Bắc Từ Liêm, Hà Nội",f3);
-            
-            //Chapter chapter1 = new Chapter(title1, 1);
-            title1.setAlignment(Element.ALIGN_LEFT);
+
+            Paragraph title2 = new Paragraph("Địa chỉ: Kiều Mai, Bắc Từ Liêm, Hà Nội", f3);
+            title2.setAlignment(Element.ALIGN_LEFT);
             document.add(title2);
-             Paragraph title3 = new Paragraph("Hotline: 0964303432",f3);
-            //Chapter chapter1 = new Chapter(title1, 1);
-            title1.setAlignment(Element.ALIGN_LEFT);
+
+            Paragraph title3 = new Paragraph("Hotline: 0964303432", f3);
+            title3.setAlignment(Element.ALIGN_LEFT);
             document.add(title3);
-            Paragraph title4 = new Paragraph("Ngày: "+ Xdate.toString(new Date(), "dd/MM/yyyy"),f3);
+
+            Paragraph title4 = new Paragraph("Ngày: " + sdf.format(date), f3);
             title4.setAlignment(Element.ALIGN_LEFT);
             document.add(title4);
-            
-             Paragraph title5 = new Paragraph("THỐNG KÊ SẢN PHẨM,DOANH THU VÀ ĐƠN HỦY THEO NGÀY",f4);
-            //Chapter chapter1 = new Chapter(title1, 1);
-            
+
+            Paragraph title5 = new Paragraph("THỐNG KÊ SẢN PHẨM, DOANH THU VÀ ĐƠN HỦY THEO NGÀY", f4);
             title5.setAlignment(Element.ALIGN_CENTER);
             title5.setSpacingBefore(15);
             document.add(title5);
-            PdfPTable a = new PdfPTable(2);
-            a.setSpacingBefore(35);
-            
-          
-            
+
             PdfPTable t = new PdfPTable(3);
             t.setSpacingBefore(15);
             t.setSpacingAfter(35);
-            
+
             PdfPCell c1 = new PdfPCell(new Phrase("Tên Sp", f2));
             t.addCell(c1);
             PdfPCell c2 = new PdfPCell(new Phrase("Số lượng bán", f2));
             t.addCell(c2);
             PdfPCell c3 = new PdfPCell(new Phrase("Tổng tiền", f2));
             t.addCell(c3);
-            
-             PdfPTable t1 = new PdfPTable(3);
+
+            PdfPTable t1 = new PdfPTable(3);
             t1.setSpacingBefore(15);
             t1.setSpacingAfter(35);
-            
+
             PdfPCell c11 = new PdfPCell(new Phrase("Mã NV", f2));
             t1.addCell(c11);
             PdfPCell c22 = new PdfPCell(new Phrase("Số lượng Đơn Hủy", f2));
             t1.addCell(c22);
             PdfPCell c33 = new PdfPCell(new Phrase("Số lượng Sản Phẩm Hủy", f2));
             t1.addCell(c33);
+
             for (int i = 0; i < model.getRowCount(); i++) {
-                
-                    PdfPCell c5 = new PdfPCell(new Phrase(model.getValueAt(i, 0).toString(), f2));
-                    t.addCell(c5);
-                    t.addCell(model.getValueAt(i, 1).toString());
-                   t.addCell(model.getValueAt(i, 2).toString());
-                
-            }
-              for (int i = 0; i < model1.getRowCount(); i++) {
-               
-                    PdfPCell c5 = new PdfPCell(new Phrase(model1.getValueAt(i, 0).toString(), f2));
-                    t1.addCell(c5);
-                    t1.addCell(model1.getValueAt(i, 1).toString());
-                   t1.addCell(model1.getValueAt(i, 2).toString());
- 
+                PdfPCell c5 = new PdfPCell(new Phrase(model.getValueAt(i, 0).toString(), f2));
+                t.addCell(c5);
+                t.addCell(model.getValueAt(i, 1).toString());
+                t.addCell(model.getValueAt(i, 2).toString());
             }
 
-            document.add(a);
-            Paragraph title111 = new Paragraph("Doanh Thu Theo Sản Phẩm: ",f3);
-            //Chapter chapter1 = new Chapter(title1, 1);
+            for (int i = 0; i < model1.getRowCount(); i++) {
+                PdfPCell c5 = new PdfPCell(new Phrase(model1.getValueAt(i, 0).toString(), f2));
+                t1.addCell(c5);
+                t1.addCell(model1.getValueAt(i, 1).toString());
+                t1.addCell(model1.getValueAt(i, 2).toString());
+            }
 
-            title111.setSpacingBefore(35);
-            document.add(title111);
             document.add(t);
-            Paragraph title222 = new Paragraph("Đơn Hủy Và Sản Phẩm Hủy: ",f3);
-            //Chapter chapter1 = new Chapter(title1, 1);        
-            title222.setSpacingBefore(15);
-            document.add(title222);
-             document.add(t1); 
+            document.add(t1);
+
             document.close();
-            System.out.println("Write file succes!");
+            System.out.println("Write file success!");
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
-    public void xuatpdf_thang(DefaultTableModel model,DefaultTableModel model1){
+
+    public void xuatpdf_thang(DefaultTableModel model, DefaultTableModel model1) {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         try {
             File newFile = new File("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\printthongke\\baocaothang.pdf");
@@ -167,102 +145,98 @@ public class PrintThongKe {
             f2.setSize(12);
             Font f3 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             f3.setSize(10);
-           
-             Font f4 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+
+            Font f4 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             f4.setSize(14);
             f4.setColor(BaseColor.RED);
             //f.setStyle(Font.NORMAL);
-            Paragraph title1 = new Paragraph("UpCoffee",f3);
+            Paragraph title1 = new Paragraph("UpCoffee", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
             title1.setAlignment(Element.ALIGN_LEFT);
             document.add(title1);
-             Paragraph title2 = new Paragraph("82 - Dịch Vọng Hậu - Cầu Giấy - Hà Nội",f3);
-            
+            Paragraph title2 = new Paragraph("82 - Dịch Vọng Hậu - Cầu Giấy - Hà Nội", f3);
+
             //Chapter chapter1 = new Chapter(title1, 1);
             title1.setAlignment(Element.ALIGN_LEFT);
             document.add(title2);
-             Paragraph title3 = new Paragraph("0964303432",f3);
+            Paragraph title3 = new Paragraph("0964303432", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
             title1.setAlignment(Element.ALIGN_LEFT);
             document.add(title3);
-            Paragraph title0 = new Paragraph("Tháng: "+ Xdate.toString(new Date(), "MM/yyyy"),f3);
+            Paragraph title0 = new Paragraph("Tháng: " + Xdate.toString(new Date(), "MM/yyyy"), f3);
             title0.setAlignment(Element.ALIGN_LEFT);
             document.add(title0);
-            
-             Paragraph title4 = new Paragraph("THỐNG KÊ SẢN PHẨM,DOANH THU VÀ ĐƠN HỦY THEO THÁNG",f4);
+
+            Paragraph title4 = new Paragraph("THỐNG KÊ SẢN PHẨM,DOANH THU VÀ ĐƠN HỦY THEO THÁNG", f4);
             //Chapter chapter1 = new Chapter(title1, 1);
-            
+
             title4.setAlignment(Element.ALIGN_CENTER);
             title4.setSpacingBefore(15);
             document.add(title4);
             PdfPTable a = new PdfPTable(2);
             a.setSpacingBefore(35);
-            
-          
-            
+
             PdfPTable t = new PdfPTable(3);
             t.setSpacingBefore(15);
             t.setSpacingAfter(35);
-            
+
             PdfPCell c1 = new PdfPCell(new Phrase("Tên Sp", f2));
             t.addCell(c1);
             PdfPCell c2 = new PdfPCell(new Phrase("Số lượng bán", f2));
             t.addCell(c2);
             PdfPCell c3 = new PdfPCell(new Phrase("Tổng tiền", f2));
             t.addCell(c3);
-            
-             PdfPTable t1 = new PdfPTable(3);
+
+            PdfPTable t1 = new PdfPTable(3);
             t1.setSpacingBefore(15);
             t1.setSpacingAfter(35);
-            
+
             PdfPCell c11 = new PdfPCell(new Phrase("Mã NV", f2));
             t1.addCell(c11);
             PdfPCell c22 = new PdfPCell(new Phrase("Số lượng Đơn Hủy", f2));
             t1.addCell(c22);
             PdfPCell c33 = new PdfPCell(new Phrase("Số lượng Sản Phẩm Hủy", f2));
             t1.addCell(c33);
-           
-           
-            
+
             for (int i = 0; i < model.getRowCount(); i++) {
-                
-                    PdfPCell c5 = new PdfPCell(new Phrase(model.getValueAt(i, 0).toString(), f2));
-                    t.addCell(c5);
-                    t.addCell(model.getValueAt(i, 1).toString());
-                   t.addCell(model.getValueAt(i, 2).toString());
-                
+
+                PdfPCell c5 = new PdfPCell(new Phrase(model.getValueAt(i, 0).toString(), f2));
+                t.addCell(c5);
+                t.addCell(model.getValueAt(i, 1).toString());
+                t.addCell(model.getValueAt(i, 2).toString());
+
             }
-              for (int i = 0; i < model1.getRowCount(); i++) {
-               
-                    PdfPCell c5 = new PdfPCell(new Phrase(model1.getValueAt(i, 0).toString(), f2));
-                    t1.addCell(c5);
-                    t1.addCell(model1.getValueAt(i, 1).toString());
-                   t1.addCell(model1.getValueAt(i, 2).toString());
-                   
-                
+            for (int i = 0; i < model1.getRowCount(); i++) {
+
+                PdfPCell c5 = new PdfPCell(new Phrase(model1.getValueAt(i, 0).toString(), f2));
+                t1.addCell(c5);
+                t1.addCell(model1.getValueAt(i, 1).toString());
+                t1.addCell(model1.getValueAt(i, 2).toString());
+
             }
             document.add(a);
-            Paragraph title111 = new Paragraph("Doanh Thu Theo Sản Phẩm: ",f3);
+            Paragraph title111 = new Paragraph("Doanh Thu Theo Sản Phẩm: ", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
-            
+
             title111.setSpacingBefore(35);
             document.add(title111);
             document.add(t);
-            Paragraph title222 = new Paragraph("Đơn Hủy Và Sản Phẩm Hủy: ",f3);
+            Paragraph title222 = new Paragraph("Đơn Hủy Và Sản Phẩm Hủy: ", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
-            
+
             title222.setSpacingBefore(15);
             document.add(title222);
-             document.add(t1);
-            
+            document.add(t1);
+
             document.close();
             System.out.println("Write file succes!");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void xuatpdf_nam(DefaultTableModel model,DefaultTableModel model1){
-       
+
+    public void xuatpdf_nam(DefaultTableModel model, DefaultTableModel model1) {
+
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         try {
             File newFile = new File("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\printthongke\\baocaonam.pdf");
@@ -274,94 +248,89 @@ public class PrintThongKe {
             f2.setSize(12);
             Font f3 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             f3.setSize(10);
-           
-             Font f4 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+
+            Font f4 = new Font(BaseFont.createFont("C:\\Users\\Admin\\Desktop\\DuAn1-QuanLyUpCofffee\\arialbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             f4.setSize(14);
             f4.setColor(BaseColor.RED);
             //f.setStyle(Font.NORMAL);
-            Paragraph title1 = new Paragraph("UpCoffee",f3);
+            Paragraph title1 = new Paragraph("UpCoffee", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
             title1.setAlignment(Element.ALIGN_LEFT);
             document.add(title1);
-             Paragraph title2 = new Paragraph("82 - Dịch Vọng Hậu - Cầu Giấy - Hà Nội",f3);
-            
+            Paragraph title2 = new Paragraph("82 - Dịch Vọng Hậu - Cầu Giấy - Hà Nội", f3);
+
             //Chapter chapter1 = new Chapter(title1, 1);
             title1.setAlignment(Element.ALIGN_LEFT);
             document.add(title2);
-             Paragraph title3 = new Paragraph("0964303432",f3);
+            Paragraph title3 = new Paragraph("0964303432", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
             title1.setAlignment(Element.ALIGN_LEFT);
             document.add(title3);
-            
-            Paragraph title0 = new Paragraph("Năm: "+ Xdate.toString(new Date(), "yyyy"),f3);
+
+            Paragraph title0 = new Paragraph("Năm: " + Xdate.toString(new Date(), "yyyy"), f3);
             title0.setAlignment(Element.ALIGN_LEFT);
             document.add(title0);
-            
-             Paragraph title4 = new Paragraph("THỐNG KÊ SẢN PHẨM,DOANH THU VÀ ĐƠN HỦY THEO NĂM",f4);
+
+            Paragraph title4 = new Paragraph("THỐNG KÊ SẢN PHẨM,DOANH THU VÀ ĐƠN HỦY THEO NĂM", f4);
             //Chapter chapter1 = new Chapter(title1, 1);
-            
+
             title4.setAlignment(Element.ALIGN_CENTER);
             title4.setSpacingBefore(15);
             document.add(title4);
             PdfPTable a = new PdfPTable(2);
             a.setSpacingBefore(35);
-            
-          
-            
+
             PdfPTable t = new PdfPTable(3);
             t.setSpacingBefore(15);
             t.setSpacingAfter(35);
-            
+
             PdfPCell c1 = new PdfPCell(new Phrase("Tên Sp", f2));
             t.addCell(c1);
             PdfPCell c2 = new PdfPCell(new Phrase("Số lượng bán", f2));
             t.addCell(c2);
             PdfPCell c3 = new PdfPCell(new Phrase("Tổng tiền", f2));
             t.addCell(c3);
-            
-             PdfPTable t1 = new PdfPTable(3);
+
+            PdfPTable t1 = new PdfPTable(3);
             t1.setSpacingBefore(15);
             t1.setSpacingAfter(35);
-            
+
             PdfPCell c11 = new PdfPCell(new Phrase("Mã NV", f2));
             t1.addCell(c11);
             PdfPCell c22 = new PdfPCell(new Phrase("Số lượng Đơn Hủy", f2));
             t1.addCell(c22);
             PdfPCell c33 = new PdfPCell(new Phrase("Số lượng Sản Phẩm Hủy", f2));
             t1.addCell(c33);
-           
-           
-            
+
             for (int i = 0; i < model.getRowCount(); i++) {
-                
-                    PdfPCell c5 = new PdfPCell(new Phrase(model.getValueAt(i, 0).toString(), f2));
-                    t.addCell(c5);
-                    t.addCell(model.getValueAt(i, 1).toString());
-                   t.addCell(model.getValueAt(i, 2).toString());
-                
+
+                PdfPCell c5 = new PdfPCell(new Phrase(model.getValueAt(i, 0).toString(), f2));
+                t.addCell(c5);
+                t.addCell(model.getValueAt(i, 1).toString());
+                t.addCell(model.getValueAt(i, 2).toString());
+
             }
-              for (int i = 0; i < model1.getRowCount(); i++) {
-               
-                    PdfPCell c5 = new PdfPCell(new Phrase(model1.getValueAt(i, 0).toString(), f2));
-                    t1.addCell(c5);
-                    t1.addCell(model1.getValueAt(i, 1).toString());
-                   t1.addCell(model1.getValueAt(i, 2).toString());
-                   
-                
+            for (int i = 0; i < model1.getRowCount(); i++) {
+
+                PdfPCell c5 = new PdfPCell(new Phrase(model1.getValueAt(i, 0).toString(), f2));
+                t1.addCell(c5);
+                t1.addCell(model1.getValueAt(i, 1).toString());
+                t1.addCell(model1.getValueAt(i, 2).toString());
+
             }
             document.add(a);
-            Paragraph title111 = new Paragraph("Doanh Thu Theo Sản Phẩm: ",f3);
+            Paragraph title111 = new Paragraph("Doanh Thu Theo Sản Phẩm: ", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
-            
+
             title111.setSpacingBefore(35);
             document.add(title111);
             document.add(t);
-            Paragraph title222 = new Paragraph("Đơn Hủy Và Sản Phẩm Hủy: ",f3);
+            Paragraph title222 = new Paragraph("Đơn Hủy Và Sản Phẩm Hủy: ", f3);
             //Chapter chapter1 = new Chapter(title1, 1);
-            
+
             title222.setSpacingBefore(15);
             document.add(title222);
-             document.add(t1);
+            document.add(t1);
 //            PdfPTable b = new PdfPTable(2);
 //            PdfPCell b1 = new PdfPCell(new Phrase("Tổng tiền: ", f2));
 //            b.addCell(b1).setBorder(0);
@@ -379,7 +348,7 @@ public class PrintThongKe {
 //            t.addCell("1.1");
 //            t.addCell("1.2");
 //            t.addCell("1.3");
-            
+
             document.close();
             System.out.println("Write file succes!");
         } catch (Exception e) {

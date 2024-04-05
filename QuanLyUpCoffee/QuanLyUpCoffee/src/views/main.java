@@ -27,15 +27,16 @@ public class main extends javax.swing.JFrame {
         if(Auth.isLogin() == true){
             lblNameNV.setText(Auth.user.getTenNV());
             txtRole.setText("ADMIN");
+            
         }else{
             new DangnhapJDialog(this, true).setVisible(true);
             lblNameNV.setText(Auth.user.getTenNV());
-            txtRole.setText("Nhân viên");
         }
         setExtendedState(this.MAXIMIZED_BOTH);
         setColor(lblTrangchu);
         setColorJpanel(pnTrangChu);
-         showPanel(new TrangchuJPanel());
+        showPanel(new TrangchuJPanel());
+        txtRole.setText("Nhân viên");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -352,7 +353,7 @@ public class main extends javax.swing.JFrame {
         txtRole.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtRole.setForeground(new java.awt.Color(255, 255, 255));
         txtRole.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        txtRole.setText("ADMIN");
+        txtRole.setText("....");
         txtRole.setToolTipText("");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
