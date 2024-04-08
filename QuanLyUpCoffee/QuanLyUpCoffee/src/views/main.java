@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
 public class main extends javax.swing.JFrame {
 
     public main() {
@@ -23,22 +22,23 @@ public class main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         showPanel(new QuanLySanPhamJPanel());
         new DangnhapJDialog(this, true).setVisible(true);
-        
-        if(Auth.isLogin() == true){
+
+        if (Auth.isLogin() == true) {
             lblNameNV.setText(Auth.user.getTenNV());
-            txtRole.setText("ADMIN");
-            
-        }else{
+            txtRole.setText(Auth.user.isVaiTro() ? "Admin" : "Nhan vien");
+        } else {
             new DangnhapJDialog(this, true).setVisible(true);
             lblNameNV.setText(Auth.user.getTenNV());
-            txtRole.setText("Nhân viên");
         }
         setExtendedState(this.MAXIMIZED_BOTH);
         setColor(lblTrangchu);
         setColorJpanel(pnTrangChu);
         showPanel(new TrangchuJPanel());
-        
+        if (Auth.isManager() == false) {
+            pnThongke.hide();
+        }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -505,6 +505,7 @@ public class main extends javax.swing.JFrame {
 
     private void pnThongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnThongkeMouseClicked
         // TODO add your handling code here:
+
         setColorJpanel(pnThongke);
         resetColorJpane(pnBanHang);
         resetColorJpane(pnGiagia);
@@ -519,7 +520,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblTrangchu);
         resetColor(lblHoaDon);
         resetColor(lblGiamGia);
-         showPanel(new MainThongKeJPanel());
+        showPanel(new MainThongKeJPanel());
     }//GEN-LAST:event_pnThongkeMouseClicked
 
     private void pnGiagiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGiagiaMouseClicked
@@ -550,20 +551,19 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
         DoiMatKhauJDialog a = new DoiMatKhauJDialog(null, true);
         a.setVisible(true);
-        
+
     }//GEN-LAST:event_mnDMKActionPerformed
 
     private void mnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnThoatActionPerformed
-       
-       
+
         int result = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn thoát khỏi phiên làm việc?", "UPCOFFEE", JOptionPane.YES_NO_OPTION);
-        if(result == JOptionPane.YES_OPTION){
+        if (result == JOptionPane.YES_OPTION) {
             Auth.clear();
-             lblNameNV.setText("Wellcome Here!");
-             DangnhapJDialog b = new DangnhapJDialog(null, true);
-             
+            lblNameNV.setText("Wellcome Here!");
+            DangnhapJDialog b = new DangnhapJDialog(null, true);
+
             b.setVisible(true);
-            if(Auth.isLogin()==true){
+            if (Auth.isLogin() == true) {
                 lblNameNV.setText(Auth.user.getTenNV());
             }
         }
@@ -575,7 +575,7 @@ public class main extends javax.swing.JFrame {
 //            if(Auth.isLogin()==true){
 //                lblNameNV.setText(Auth.user.getTenNV());
 //            }
-       
+
     }//GEN-LAST:event_mnThoatActionPerformed
 
     /**
@@ -650,12 +650,15 @@ public class main extends javax.swing.JFrame {
         pnscrene.add(panel);
         pnscrene.validate();
     }
-     public void setColorJpanel(JPanel pane){
+
+    public void setColorJpanel(JPanel pane) {
         pane.setBackground(new Color(139, 69, 19));
     }
-    public void resetColorJpane(JPanel pane){
+
+    public void resetColorJpane(JPanel pane) {
         pane.setBackground(Color.black);
     }
+
     public void setColor(JLabel label) {
         label.setForeground(Color.WHITE);
     }

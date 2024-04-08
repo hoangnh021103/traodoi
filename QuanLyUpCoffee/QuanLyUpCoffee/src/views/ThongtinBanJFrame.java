@@ -188,9 +188,6 @@ public class ThongtinBanJFrame extends javax.swing.JFrame {
             } else {
                 lbltrangthaidon.setText("đặt");
             }
-            //System.out.println(XDate.toString(banchitiet.getThoidiemCoNguoi(), "hh:mm:ss"));   
-//            BanChitiet bct = banctdao.selectBydonchinh(ban.getIdBan());
-//            lblban.setText(bct.getID_Ban()+"");
         }
     }
 }

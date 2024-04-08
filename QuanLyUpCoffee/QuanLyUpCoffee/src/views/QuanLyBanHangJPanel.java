@@ -726,15 +726,12 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cboLoaidouongItemStateChanged
 
     private void mnaddDEskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnaddDEskActionPerformed
-        if (Auth.isManager()) {
+        if (Auth.isManager() == true || Auth.isManager() == false) {
             ThemBanJDialog themBan = new ThemBanJDialog(null, true);
             themBan.setVisible(true);
             filltoDesk();
             filltoDesktaiquay();
             updateUI();
-        } else {
-            JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập tài khoản quản lý để sử dụng chức năng này!");
-            return;
         }
     }//GEN-LAST:event_mnaddDEskActionPerformed
 

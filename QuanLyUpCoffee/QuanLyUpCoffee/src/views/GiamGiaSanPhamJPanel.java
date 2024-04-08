@@ -534,11 +534,9 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
                 String idsanpham = daoSP.selectNameByID(
                         tblSanPhamgiamchitiet.getValueAt(row, 0).toString());
                 Daoct.delete(idsanpham);
-                System.out.println(maGiamGia + "    là mã mã sản phẩm đã giảm  ");
                 filltableChitiet();
                 MsgBox.alert(this, "đã xóa sản phẩm này");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -673,10 +671,8 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
     }
 
     SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd");
-
     private GiamGia getFrom() {
         GiamGia gg = new GiamGia();
-
         int rows = tblSanphamgiamgia.getSelectedRow();
         gg.setId_GiamGia(Integer.parseInt(tblSanphamgiamgia.getValueAt(rows, 0).toString()));
         gg.setTenSK(txtSukien.getText());
@@ -688,7 +684,6 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
 
     private GiamGia CreateData() {
         GiamGia gg = new GiamGia();
-
         gg.setId_GiamGia(gg.getId_GiamGia());
         gg.setTenSK(txtSukien.getText());
         gg.setIdnhanvien(Auth.user.getId_Nhanvien());
@@ -709,10 +704,8 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
     }
 
     private void setform(GiamGia gg) {
-
         txtSukien.setText(tblSanphamgiamgia.getValueAt(row, 1).toString());
         lblTenNhanVien.setText(tblSanphamgiamgia.getValueAt(row, 2).toString());
-
         txtdate1.setDate(gg.getNgayBD());
 //        System.out.println(gg.getNgayBD());
         txtdate2.setDate(gg.getNgayKT());
@@ -825,17 +818,12 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
             Date datebd = gg.getNgayBD();
 
             float tiengiam = (float) gia - (((float) ggct.getPhantramgiam() / 100) * gia);
-            //System.out.println((float) gia - ((float) ggct.getPhantramgiam()/100) * gia);
             int tiengiamint = (int) tiengiam;
-            // System.out.println(tiengiamint);
             String a = tiengiamint + "";
-            //System.out.println(a.length());
             if (a.length() == 4) {
                 int soThu1 = Integer.parseInt(a.charAt(1) + "");
                 if (soThu1 < 5) {
-                    //System.out.println("heelo");
                     a = a.substring(0, 1);
-                    //System.out.println(a);
                     return Integer.parseInt(a + "000");
                 } else {
                     a = a.substring(0, 1);
@@ -846,7 +834,6 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
             } else if (tiengiam == 0) {
                 return 0;
             } else {
-//                System.out.println("heelosssss");
                 int soThu2 = Integer.parseInt(a.charAt(2) + "");
                 if (soThu2 < 5) {
                     a = a.substring(0, 2);;
@@ -863,8 +850,6 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
         }
         return 0;
     }
-
-    /// sửa phần trăm giảm giá\
     private void updateGiamGia() {
         try {
             if (MsgBox.confirm(this, "bạn muốn cập nhập lại giảm giá của sản phẩm ?")) {
