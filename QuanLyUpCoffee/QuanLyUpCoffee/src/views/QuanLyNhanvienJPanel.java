@@ -14,6 +14,8 @@ import helper.Ximage;
 import helper.JDBCHeper;
 import static java.awt.Color.white;
 import java.io.File;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -128,7 +130,7 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblNhanVienkhd = new javax.swing.JTable();
-        btnGuiMal = new java.awt.Button();
+        btnGuiMail = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(241, 241, 241));
 
@@ -318,10 +320,11 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Nhân viên không hoạt dộng", jPanel3);
 
-        btnGuiMal.setLabel("button1");
-        btnGuiMal.addActionListener(new java.awt.event.ActionListener() {
+        btnGuiMail.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        btnGuiMail.setText("Gửi mail");
+        btnGuiMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuiMalActionPerformed(evt);
+                btnGuiMailActionPerformed(evt);
             }
         });
 
@@ -337,39 +340,37 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(268, 268, 268)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(25, 25, 25)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(rdoNam)
-                                            .addGap(29, 29, 29)
-                                            .addComponent(rdoNu))
-                                        .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jDateNgaysinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnGuiMal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(36, 36, 36)
+                                .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(25, 25, 25)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(rdoNam)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(rdoNu))
+                                    .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDateNgaysinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -410,7 +411,8 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
                             .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tbnLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuiMail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(47, 47, 47))))
         );
         layout.setVerticalGroup(
@@ -453,6 +455,17 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rdoQuanly)
+                            .addComponent(rdoNhanvien))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnnext)
+                            .addComponent(btnLast)
+                            .addComponent(btnPrev)
+                            .addComponent(btnStart))
+                        .addGap(79, 79, 79))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -465,23 +478,9 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel11)
                                 .addComponent(rdoNghiviec)
-                                .addComponent(rdoLamviec))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rdoQuanly)
-                        .addComponent(rdoNhanvien)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnnext)
-                            .addComponent(btnLast)
-                            .addComponent(btnPrev)
-                            .addComponent(btnStart))
-                        .addGap(79, 79, 79))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnGuiMal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(rdoLamviec))
+                            .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -556,13 +555,10 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblNhanVienkhdMouseClicked
 
     private void txtTenNVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenNVKeyReleased
-        // TODO add your handling code here:
-//        fillTableSearch(txtTenNV.getText());
-//        updateStatus();
-//        row = -1;
+
     }//GEN-LAST:event_txtTenNVKeyReleased
 
-    private void btnGuiMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMalActionPerformed
+    private void btnGuiMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMailActionPerformed
         // TODO add your handling code here:
         int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn gửi mail?", "Gửi Mail Báo Cáo", JOptionPane.YES_NO_OPTION);
         if (hoi == JOptionPane.YES_OPTION) {
@@ -572,11 +568,11 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
                 Logger.getLogger(MainThongKeJPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_btnGuiMalActionPerformed
+    }//GEN-LAST:event_btnGuiMailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnGuiMal;
+    private javax.swing.JButton btnGuiMail;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnStart;
@@ -637,6 +633,51 @@ void init() {
     services.SerNhanVien inserts = new SerNhanVien();
     services.SerNhanVien updates = new SerNhanVien();
     services.SerNhanVien deletes = new SerNhanVien();
+
+    public void guiMail() throws MessagingException {
+        Properties p = new Properties();
+        p.put("mail.smtp.auth", "true");
+        p.put("mail.smtp.starttls.enable", "true");
+        p.put("mail.smtp.host", "smtp.office365.com");
+        p.put("mail.smtp.port", 587);
+
+        // Email gửi
+        String username = "caubuonviai24@outlook.com";
+        String password = "0941216003z";
+
+        Session s = Session.getInstance(p, new javax.mail.Authenticator() {
+            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                return new javax.mail.PasswordAuthentication(username, password);
+            }
+        });
+
+        String mail = JOptionPane.showInputDialog("Nhập mail gửi đến?");
+        if (mail == null || mail.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập Mail!");
+            return;
+        }
+
+        String checkEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+        if (!mail.matches(checkEmail)) {
+            JOptionPane.showMessageDialog(null, "Email không hợp lệ");
+            return;
+        }
+
+        Message message = new MimeMessage(s);
+        message.setFrom(new InternetAddress("caubuonviai24@outlook.com"));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mail));
+        message.setSubject("Gửi nhân viên tài khoản mật khẩu làm việc ");
+
+        // Mã hóa mật khẩu bằng MD5
+        String Htmlcode = "<h3 >Tài khoản & Mật khẩu của nhân viên UPCOFFEE </h3>";
+        String Htmlcode4 = " Tài khoản của bạn" + ": " + txtTaikhoan.getText() + "<br>";
+        String Htmlcode6 = " Mật khẩu của bạn" + ": " + txtMatkhau.getText() + "<br>";
+
+        message.setContent(Htmlcode + Htmlcode4 + Htmlcode6, "text/html;charset=UTF-8");
+
+        Transport.send(message);
+        JOptionPane.showMessageDialog(null, "Đã gửi!");
+    }
 
     void insert() {
         if (checkEmail() && checkLength() && checkSDT() && checkSame() && checkSameAccount()) {
@@ -1095,45 +1136,4 @@ void init() {
         }
     }
 
-    public void guiMail() throws MessagingException {
-        Properties p = new Properties();
-        p.put("mail.smtp.auth", "true");
-        p.put("mail.smtp.starttls.enable", "true");
-        p.put("mail.smtp.host", "smtp.office365.com");
-        p.put("mail.smtp.port", 587);
-        // Email gửi
-        String username = "caubuonviai24@outlook.com";
-        String password = "0941216003z";
-        Session s = Session.getInstance(p,
-                new javax.mail.Authenticator() {
-            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                return new javax.mail.PasswordAuthentication(username, password);
-            }
-        });
-        String mail = JOptionPane.showInputDialog("Nhập mail gửi đến?");
-        if (mail.isEmpty()) {
-            JOptionPane.showMessageDialog(btnGuiMal, "vui lòng nhập Mail!");
-            return;
-        }
-        String checkEmail = "\\w+@\\w+(\\.\\w+){1,2}";
-        if (!mail.matches(checkEmail)) {
-            JOptionPane.showMessageDialog(this, "Email không hợp lệ");
-
-            return;
-        }
-        Message message = new MimeMessage(s);
-        message.setFrom(new InternetAddress("caubuonviai24@outlook.com"));
-        message.setRecipients(
-                Message.RecipientType.TO,
-                InternetAddress.parse(mail)
-        );
-        //body mail
-        message.setSubject("Báo Cáo Thống Kê ");//a=hàng ngày
-        String Htmlcode = "<h3 >Kính Gửi Sếp !  </h3>";
-        String Htmlcode4 = " Tai khoan" + ": " + txtTaikhoan.getText() + "<br>";
-        String Htmlcode6 = " MatKhau" + ": " + txtMatkhau.getPassword() + "<br>";
-        message.setContent(Htmlcode + Htmlcode4 + Htmlcode6, "text/html;charset=UTF-8");
-        Transport.send(message);
-        JOptionPane.showMessageDialog(this, "Đã gửi!");
-    }
 }
