@@ -31,12 +31,13 @@ public class main extends javax.swing.JFrame {
         }else{
             new DangnhapJDialog(this, true).setVisible(true);
             lblNameNV.setText(Auth.user.getTenNV());
+            txtRole.setText("Nhân viên");
         }
         setExtendedState(this.MAXIMIZED_BOTH);
         setColor(lblTrangchu);
         setColorJpanel(pnTrangChu);
         showPanel(new TrangchuJPanel());
-        txtRole.setText("Nhân viên");
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
