@@ -1,6 +1,6 @@
-﻿CREATE DATABASE UPCOFFEE
+﻿CREATE DATABASE UPCOFFEE3
 GO
-USE UPCOFFEE
+USE UPCOFFEE3
 GO 
 --DROP DATABASE UPCOFFEE
 CREATE TABLE NhanVien(
@@ -104,6 +104,15 @@ CREATE TABLE Giamgiachitiet(
 	ID_Sanpham VARCHAR(10),
 	Giam INT
 )
+CREATE TABLE GiaSanPhamTheoNgay (
+    ID_Gia INT IDENTITY(1,1) PRIMARY KEY, -- Thêm cột ID_Gia để làm khóa chính
+    ID_SanPham VARCHAR(10) NOT NULL,
+    Ngay DATE NOT NULL,
+    Gia INT NOT NULL,
+    CONSTRAINT FK_GiaSanPhamTheoNgay_SanPham FOREIGN KEY (ID_SanPham) REFERENCES SanPham(ID_Sanpham) -- Thêm ràng buộc khóa ngoại đến bảng SanPham
+);
+
+
 GO 
 --Foreign key
 ALTER TABLE dbo.HoaDon ADD FOREIGN KEY(ID_Nhanvien) REFERENCES dbo.NhanVien(ID_Nhanvien) --Hoadon
@@ -118,6 +127,8 @@ ALTER TABLE dbo.BanChiTiet ADD FOREIGN KEY(ID_Hoadon) REFERENCES dbo.HoaDon(ID_H
 ALTER TABLE dbo.GiamGia ADD FOREIGN KEY(ID_Nhanvien) REFERENCES dbo.NhanVien(ID_Nhanvien) --GiamGia
 ALTER TABLE dbo.Giamgiachitiet ADD FOREIGN KEY(Id_GiamGia) REFERENCES dbo.GiamGia(Id_GiamGia) --Giamgiachitiet
 ALTER TABLE dbo.Giamgiachitiet ADD FOREIGN KEY(ID_Sanpham) REFERENCES dbo.SanPham(ID_Sanpham) --Giamgiachitiet
+
+
 --
 ------------------ PHẦN TRUY VẤN -------------------
 select * from NhanVien
@@ -130,6 +141,7 @@ select * from DonViSanPham
 select * from LoaiSanPham
 select * from GiamGia
 select * from Giamgiachitiet
+select * from GiaSanPhamTheoNgay
 ------------------ PHẦN INSERT---------------------
 --Loaisanpham
 INSERT dbo.LoaiSanPham VALUES('LSP1', N'Cà phê')
@@ -168,6 +180,10 @@ INSERT dbo.GiamGia VALUES(N'Noel','NV1',GETDATE(),GETDATE())
 INSERT dbo.GiamGia VALUES(N'Event','NV1','2002/10/11','2002/10/11')
 INSERT dbo.GiamGia VALUES(N'Khai trương','NV1',GETDATE(),GETDATE())
 go
+INSERT INTO GiaSanPhamTheoNgay
+VALUES ('SP1', '2024-04-09', 10000);
+go
+
 --Giam chi tiết
 --INSERT dbo.Giamgiachitiet VALUES(1,'SP1',20)
 --INSERT dbo.Giamgiachitiet VALUES(2,'SP2',10)
